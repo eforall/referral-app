@@ -13,7 +13,11 @@ body {
 }
 
 md-toolbar {
+  max-width: 600px;
+  position: fixed;
+  z-index: 1000;
   min-height: 48px !important;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 md-toolbar md-toolbar-row {
   justify-content: space-between;
@@ -29,21 +33,33 @@ p {
   margin: 16px;
 }
 
+div.md-overlay-container {
+  z-index: 2000;
+}
+
 md-grid-list {
   max-width: 1403px;
   margin: 16px;
 }
 
 md-sidenav-layout {
-  height: 100vh;
+  top: 48px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  min-height: 500px;
+  background-color: #FFF !important;
 }
 
 md-sidenav {
-  width: 320px;
+  width: 200px;
+  box-shadow: 1px 0 4px rgba(0,0,0,0.5);
 }
 
 .md-sidenav-content {
   padding: 20px;
+}
+
+div.md-sidenav-backdrop.md-sidenav-shown {
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .icon-20 {
