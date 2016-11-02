@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background: #777;
+}
+
+.rootDiv {
+  max-width: 600px;
+  margin: 0 auto 5px auto;
+}
+
+md-toolbar {
+  min-height: 48px !important;
+}
+md-toolbar md-toolbar-row {
+  justify-content: space-between;
+  height: 48px !important;
+  line-height: 48px;
+}
+
+md-toolbar md-toolbar-row span {
+  flex-grow: 1;
+}
+
+p {
+  margin: 16px;
+}
+
+md-grid-list {
+  max-width: 1403px;
+  margin: 16px;
+}
+
+md-sidenav-layout {
+  height: 100vh;
+}
+
+md-sidenav {
+  width: 320px;
+}
+
+.md-sidenav-content {
+  padding: 20px;
+}
+
+.icon-20 {
+  font-size: 20px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
