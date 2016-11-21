@@ -5,7 +5,16 @@
  * administrator functionality.
  */
 
+export interface LoginProfile {
+    displayName: string;
+    email: string;
+    emailVerified: boolean;
+    photoURL: string;
+    uid: string;
+}
+
 export interface LoginState {
+    profile?: LoginProfile,
     admin: boolean,
 }
 

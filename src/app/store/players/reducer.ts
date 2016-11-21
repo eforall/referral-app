@@ -5,6 +5,10 @@ export function playersReducer(state = initialState, action: PlayersAction) {
 
     switch (action.type) {
 
+        case ACTIONS.RESET_LOGIN: {
+            return initialState;
+        }
+
         case ACTIONS.UPDATE_PARTNERS: {
             return Object.assign({}, state, { partners: action.payload });
         }

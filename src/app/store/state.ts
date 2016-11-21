@@ -1,3 +1,4 @@
+export { LoginProfile } from  './login/state';
 export { Partner, User, Contact } from './players/state';
 
 import { LoginState } from './login/state';

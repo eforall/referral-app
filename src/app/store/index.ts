@@ -18,7 +18,6 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 
 import { AppState } from './state';
-export { AppState } from './state';
 
 
 /*** Reducers ***/

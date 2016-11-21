@@ -1,12 +1,17 @@
 import { Action } from '@ngrx/store';
 import { actionType } from '../utils';
-import { Partner, User, Contact } from './state';
+import { LoginProfile, Partner, User, Contact } from './state';
 
 export const ACTIONS = {
+    //Login actions
+    SET_LOGIN: actionType('[SetLoginAction]'),
+    SET_ADMIN: actionType('[SetAdminAction]'),
+    RESET_LOGIN: actionType('[ResetLoginAction]'),
+
+    //Partner actions
     UPDATE_PARTNERS: actionType('[UpdatePartnersAction]'),
     UPDATE_USERS: actionType('[UpdateUsersAction]'),
     UPDATE_CONTACTS: actionType('[UpdateContactsAction]'),
-    SET_ADMIN: actionType('[SetAdminAction]'),
 }
 
 
@@ -29,21 +34,36 @@ export class UpdateContactsAction implements Action {
     constructor(public payload: Contact[]) {}
 }
 
-export type PlayersAction
-    = UpdatePlayersAction
-    | UpdateUsersAction
-    | UpdateContactsAction;
-
-
 
 /**
  * Login
  */
+
+export class SetLoginAction implements Action {
+    type = ACTIONS.SET_LOGIN;
+    constructor(public payload: LoginProfile) {}
+}
 
 export class SetAdminAction implements Action {
     type = ACTIONS.SET_ADMIN;
     constructor(public payload: boolean) {}
 }
 
+export class ResetLoginAction implements Action {
+    type = ACTIONS.RESET_LOGIN;
+    public payload = undefined;  //unused
+    constructor() {}
+}
+
+
+
+export type PlayersAction
+    = UpdatePlayersAction
+    | UpdateUsersAction
+    | UpdateContactsAction
+    | ResetLoginAction;
+
 export type LoginAction
-    = SetAdminAction;
+    = SetLoginAction
+    | SetAdminAction
+    | ResetLoginAction;
