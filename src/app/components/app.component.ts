@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MdSidenav } from "@angular/material";
-import { AuthService } from './firebase';
+import { AuthService } from '../firebase';
+import { NavigatorService } from '../routing';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,11 @@ import { AuthService } from './firebase';
 export class AppComponent {
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  constructor(private authService: AuthService) {
+  constructor(private navigator: NavigatorService, private auth: AuthService) {
   }
 
   signout() {
-    this.authService.logout();
+    this.auth.logout();
   }
 
 }

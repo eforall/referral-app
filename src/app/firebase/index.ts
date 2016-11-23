@@ -1,3 +1,5 @@
+export { User } from './user';
+
 export { authConfig } from './auth-config'
 export { AuthService } from './auth.service';
 

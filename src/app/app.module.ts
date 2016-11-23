@@ -9,13 +9,16 @@ import { AngularFireModule } from 'angularfire2';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './store';
 
-import { AppComponent } from './app.component';
-import * as ROUTER from './router';
+import * as COMPONENTS from './components';
+import * as ROUTING from './routing';
 import * as FIREBASE from './firebase';
 
 @NgModule({
   declarations: [
-    AppComponent
+    COMPONENTS.AppComponent,
+    COMPONENTS.WelcomeComponent,
+    COMPONENTS.OpenComponent,
+    COMPONENTS.WaitingComponent,
   ],
   imports: [
     CommonModule,
@@ -23,14 +26,15 @@ import * as FIREBASE from './firebase';
     FormsModule,
     //HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(ROUTER.routes),
+    RouterModule.forRoot(ROUTING.routes),
     AngularFireModule.initializeApp(FIREBASE.firebaseConfig, FIREBASE.authConfig),
     StoreModule.provideStore(reducer),
   ],
   providers: [
     FIREBASE.AuthService,
     FIREBASE.FirebaseService,
+    ROUTING.NavigatorService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [COMPONENTS.AppComponent]
 })
 export class AppModule { }
