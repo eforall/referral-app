@@ -8,5 +8,5 @@
 import { Member } from './member';
 
 export interface User extends Member {
-    isAdmin: boolean;
+    admin: boolean;
 }

@@ -4,7 +4,7 @@
       <md-icon>menu</md-icon>
     </button>
     <span>
-      Referral App
+      Referrals
     </span>
     <button md-icon-button [md-menu-trigger-for]="menu">
       <md-icon>account_box</md-icon>
@@ -12,11 +12,16 @@
   </md-toolbar>
   <md-sidenav-layout>
     <md-sidenav mode="over" #sidenav>
-      <button md-raised-button (click)="sidenav.close()" color="accent">CLOSE</button>
+      <md-nav-list>
+        <a md-list-item routerLink="/open">Open Referrals</a>
+        <a md-list-item (click)="sidenav.close()">Find a contact</a>
+        <a md-list-item (click)="sidenav.close()">Create a contact</a>
+        <a md-list-item (click)="sidenav.close()">Administration</a>
+      </md-nav-list>
     </md-sidenav>
-    <router-outlet>Loading...</router-outlet>
+    <router-outlet></router-outlet>
   </md-sidenav-layout>
 </div>
 <md-menu x-position="before" #menu="mdMenu">
-  <button md-menu-item (click)="signout()">Sign Out</button>
+  <button md-menu-item (click)="auth.logout()">Sign Out</button>
 </md-menu>

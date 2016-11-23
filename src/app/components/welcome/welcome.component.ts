@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { MdSidenav } from "@angular/material";
 
 @Component({
   selector: 'ra-welcome',

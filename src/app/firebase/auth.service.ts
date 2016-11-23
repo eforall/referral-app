@@ -37,10 +37,10 @@ export class AuthService {
         })
         .switchMap((value) => {
           if (value == undefined) return Observable.of(undefined);
-          return af.database.object('/memberaccess/' + value.uid)
+          return af.database.object('/access/' + value.uid)
                     .map((o) => {
-                      console.log('/memberaccess/' + value.uid, o);
-                      return Object.assign({}, value, {pid: o.pid, isAdmin: !!o.isAdmin});
+                      console.log('/access/' + value.uid, o);
+                      return Object.assign({}, value, {pid: o.pid, admin: !!o.admin});
                     })
         });
 
@@ -49,7 +49,8 @@ export class AuthService {
 
           if (user == undefined) af.auth.login();  //always logged in
           else {
-            
+            if (user.pid) this.router.navigate(["/open"]);
+            else this.router.navigate(["/welcome"]);
           }
         });
 

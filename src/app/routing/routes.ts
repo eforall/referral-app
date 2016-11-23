@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ConfiguredUserGuard } from './configured-user-guard';
 import * as COMPONENTS from '../components';
 
 export const routes: Routes = [
@@ -15,6 +16,7 @@ export const routes: Routes = [
       },
       {
         path: 'open',
+        canActivate: [ ConfiguredUserGuard ],
         component: COMPONENTS.OpenComponent,
       },
     ]

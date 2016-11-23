@@ -34,8 +34,10 @@ import * as FIREBASE from './firebase';
     FIREBASE.AuthService,
     FIREBASE.DataService,
     FIREBASE.DataLoaderService,
-    ROUTING.NavigatorService,
+    //ROUTING.NavigatorService,
   ],
-  bootstrap: [COMPONENTS.AppComponent]
+  bootstrap: [
+    COMPONENTS.AppComponent
+  ]
 })
 export class AppModule { }

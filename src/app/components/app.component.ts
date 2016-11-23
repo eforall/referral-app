@@ -11,11 +11,7 @@ import { NavigatorService } from '../routing';
 export class AppComponent {
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  constructor(private navigator: NavigatorService, private auth: FIREBASE.AuthService, private data: FIREBASE.DataService) {
-  }
-
-  signout() {
-    this.auth.logout();
+  constructor(private auth: FIREBASE.AuthService, private data: FIREBASE.DataService) {
   }
 
 }
