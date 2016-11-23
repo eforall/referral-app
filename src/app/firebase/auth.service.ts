@@ -9,7 +9,6 @@ import { SetLoginAction, ResetLoginAction } from '../store/actions';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-
 import { User } from './user';
 
 @Injectable()
@@ -17,10 +16,12 @@ export class AuthService {
 
   public user: Observable<User>;
 
-  constructor(private store: Store<AppState>, private af: AngularFire, private router: Router) {
+  constructor(private store: Store<AppState>,
+              private af: AngularFire,
+              private router: Router) {
+
     this.user = af.auth
         .map((auth) => {
-          console.log("auth", auth);
           if (auth == undefined || auth.auth == undefined) return undefined;
           return {
             uid: auth.auth.uid,
@@ -36,15 +37,20 @@ export class AuthService {
         })
         .switchMap((value) => {
           if (value == undefined) return Observable.of(undefined);
-          return af.database.object('/members/' + value.uid)
+          return af.database.object('/memberaccess/' + value.uid)
                     .map((o) => {
-                      console.log('/members/' + value.uid, o);
-                      return Object.assign(value, {partner: o.partner, admin: !!o.admin});
+                      console.log('/memberaccess/' + value.uid, o);
+                      return Object.assign({}, value, {pid: o.pid, isAdmin: !!o.isAdmin});
                     })
         });
 
         this.user.subscribe((user) => {
+          console.log("USER", user);
+
           if (user == undefined) af.auth.login();  //always logged in
+          else {
+            
+          }
         });
 
   }

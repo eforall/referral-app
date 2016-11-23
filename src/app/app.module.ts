@@ -32,7 +32,8 @@ import * as FIREBASE from './firebase';
   ],
   providers: [
     FIREBASE.AuthService,
-    FIREBASE.FirebaseService,
+    FIREBASE.DataService,
+    FIREBASE.DataLoaderService,
     ROUTING.NavigatorService,
   ],
   bootstrap: [COMPONENTS.AppComponent]

@@ -5,12 +5,8 @@
  * administrator functionality.
  */
 
-export interface User {
-    displayName: string;
-    email: string;
-    emailVerified: boolean;
-    photoURL: string;
-    uid: string;
-    partner: string;
-    admin: boolean;
+import { Member } from './member';
+
+export interface User extends Member {
+    isAdmin: boolean;
 }

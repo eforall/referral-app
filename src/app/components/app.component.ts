@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MdSidenav } from "@angular/material";
-import { AuthService } from '../firebase';
+import * as FIREBASE from '../firebase';
 import { NavigatorService } from '../routing';
 
 @Component({
@@ -11,7 +11,7 @@ import { NavigatorService } from '../routing';
 export class AppComponent {
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  constructor(private navigator: NavigatorService, private auth: AuthService) {
+  constructor(private navigator: NavigatorService, private auth: FIREBASE.AuthService, private data: FIREBASE.DataService) {
   }
 
   signout() {
