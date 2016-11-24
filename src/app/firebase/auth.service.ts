@@ -59,20 +59,7 @@ export class AuthService {
 
   }
 
-  private authChanged(auth) {
-    console.log("Auth changed");
-    if (auth == null) {
-        this.store.dispatch(new ResetLoginAction());
-        if (auth === null) this.af.auth.login();  //auto login again
-    }
-    else {
-        var profile: LoginProfile = auth.auth;
-        this.store.dispatch(new SetLoginAction(profile));
-    }
-  }
-
   logout() {
-    console.log("Logging out!");
     this.af.auth.logout();
     this.router.navigate(['/']);
   }
