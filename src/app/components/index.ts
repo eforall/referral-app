@@ -1,5 +1,7 @@
 export { AppComponent } from './app.component';
 
+export { AdminComponent } from './admin/admin.component';
+
 export { WaitingComponent } from './waiting/waiting.component';
 export { WelcomeComponent } from './welcome/welcome.component';
 

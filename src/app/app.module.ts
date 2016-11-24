@@ -17,6 +17,7 @@ import * as FIREBASE from './firebase';
 @NgModule({
   declarations: [
     COMPONENTS.AppComponent,
+    COMPONENTS.AdminComponent,
     COMPONENTS.WaitingComponent,
     COMPONENTS.WelcomeComponent,
     COMPONENTS.ShowOpenReferralsComponent,
@@ -24,6 +25,7 @@ import * as FIREBASE from './firebase';
     COMPONENTS.CreateContactComponent,
     COMPONENTS.FindContactsComponent,
     COMPONENTS.ViewContactComponent,
+    DIRECTIVES.AdminUserOnlyDirective,
     DIRECTIVES.PartnerUserOnlyDirective,
   ],
   imports: [
@@ -41,6 +43,7 @@ import * as FIREBASE from './firebase';
     FIREBASE.DataService,
     FIREBASE.DataLoaderService,
     ROUTING.ConfiguredUserGuard,
+    ROUTING.AdminUserGuard,
   ],
   bootstrap: [
     COMPONENTS.AppComponent

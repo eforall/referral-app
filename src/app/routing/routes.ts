@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ConfiguredUserGuard } from './configured-user.guard';
+import { AdminUserGuard } from './admin-user.guard';
 import * as COMPONENTS from '../components';
 
 export const routes: Routes = [
@@ -45,6 +46,11 @@ export const routes: Routes = [
             component: COMPONENTS.ViewContactComponent,
           },
         ]
+      },
+      {
+        path: 'admin',
+        canActivate: [ AdminUserGuard ],
+        component: COMPONENTS.AdminComponent,
       },
     ]
   },
