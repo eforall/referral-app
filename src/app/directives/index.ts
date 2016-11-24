@@ -1,0 +1,1 @@
+export { PartnerUserOnlyDirective } from './partner-user-only.directive';

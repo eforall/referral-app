@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ConfiguredUserGuard } from './configured-user-guard';
+import { ConfiguredUserGuard } from './configured-user.guard';
 import * as COMPONENTS from '../components';
 
 export const routes: Routes = [
@@ -15,9 +15,36 @@ export const routes: Routes = [
         component: COMPONENTS.WelcomeComponent,
       },
       {
-        path: 'open',
+        path: 'referrals',
         canActivate: [ ConfiguredUserGuard ],
-        component: COMPONENTS.OpenComponent,
+        children: [
+          {
+            path: '',
+            component: COMPONENTS.ShowOpenReferralsComponent,
+          },
+          {
+            path: ':rid',
+            component: COMPONENTS.EditReferralComponent,
+          },
+        ]
+      },
+      {
+        path: 'contacts',
+        canActivate: [ ConfiguredUserGuard ],
+        children: [
+          {
+            path: '',
+            component: COMPONENTS.FindContactsComponent,
+          },
+          {
+            path: 'create',
+            component: COMPONENTS.CreateContactComponent,
+          },
+          {
+            path: ':cid',
+            component: COMPONENTS.ViewContactComponent,
+          },
+        ]
       },
     ]
   },

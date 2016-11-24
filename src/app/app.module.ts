@@ -10,15 +10,21 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store';
 
 import * as COMPONENTS from './components';
+import * as DIRECTIVES from './directives';
 import * as ROUTING from './routing';
 import * as FIREBASE from './firebase';
 
 @NgModule({
   declarations: [
     COMPONENTS.AppComponent,
-    COMPONENTS.WelcomeComponent,
-    COMPONENTS.OpenComponent,
     COMPONENTS.WaitingComponent,
+    COMPONENTS.WelcomeComponent,
+    COMPONENTS.ShowOpenReferralsComponent,
+    COMPONENTS.EditReferralComponent,
+    COMPONENTS.CreateContactComponent,
+    COMPONENTS.FindContactsComponent,
+    COMPONENTS.ViewContactComponent,
+    DIRECTIVES.PartnerUserOnlyDirective,
   ],
   imports: [
     CommonModule,
@@ -34,7 +40,7 @@ import * as FIREBASE from './firebase';
     FIREBASE.AuthService,
     FIREBASE.DataService,
     FIREBASE.DataLoaderService,
-    //ROUTING.NavigatorService,
+    ROUTING.ConfiguredUserGuard,
   ],
   bootstrap: [
     COMPONENTS.AppComponent

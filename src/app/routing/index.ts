@@ -1,2 +1,2 @@
 export { routes } from './routes';
-export { NavigatorService } from './navigator.service';
+export { ConfiguredUserGuard } from './configured-user.guard';

@@ -45,6 +45,17 @@ md-sidenav-layout {
   overflow-y: auto !important;
 }
 
+md-sidenav md-nav-list a[disabled] {
+  color: #AAA;
+  pointer-events: none;
+  cursor: default;
+}
+
+md-sidenav md-nav-list a[disabled] div:hover,
+md-sidenav md-nav-list a[disabled] div.md-list-item {
+  background-color: transparent;
+}
+
 p {
   margin: 16px;
 }

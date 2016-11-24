@@ -15,6 +15,7 @@ import { User } from './user';
 export class AuthService {
 
   public user: Observable<User>;
+  public userSnapshot: User = undefined;
 
   constructor(private store: Store<AppState>,
               private af: AngularFire,
@@ -45,11 +46,13 @@ export class AuthService {
         });
 
         this.user.subscribe((user) => {
-          console.log("USER", user);
+          this.userSnapshot = user;
 
-          if (user == undefined) af.auth.login();  //always logged in
+          if (user == undefined) {
+            af.auth.login();  //always logged in
+          }
           else {
-            if (user.pid) this.router.navigate(["/open"]);
+            if (user.pid) this.router.navigate(["/referrals"]);
             else this.router.navigate(["/welcome"]);
           }
         });
