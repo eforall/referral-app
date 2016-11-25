@@ -1,0 +1,21 @@
+[md-tab-nav-bar] {
+    border: 1px solid #DDD;
+    margin-bottom: 2rem;
+    padding: 0.2rem;
+
+    background: #f9f9f9;
+    a {
+        border: 1px solid transparent;
+        padding: 0.5rem;
+        text-decoration: none;
+        font-size:1.3rem;
+        color: #666;
+    }
+
+    a.active {
+        border: 1px solid #DDD;
+        color: #000;
+        background: #f9f9f9;
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+}

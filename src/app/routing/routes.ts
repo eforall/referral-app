@@ -51,6 +51,16 @@ export const routes: Routes = [
         path: 'admin',
         canActivate: [ AdminUserGuard ],
         component: COMPONENTS.AdminComponent,
+        children: [
+          {
+            path: '',
+            component: COMPONENTS.PartnersAdminComponent,
+          },
+          {
+            path: 'members',
+            component: COMPONENTS.MembersAdminComponent,
+          },
+        ]
       },
     ]
   },

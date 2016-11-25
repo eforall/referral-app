@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
@@ -18,6 +18,8 @@ import * as FIREBASE from './firebase';
   declarations: [
     COMPONENTS.AppComponent,
     COMPONENTS.AdminComponent,
+    COMPONENTS.PartnersAdminComponent,
+    COMPONENTS.MembersAdminComponent,
     COMPONENTS.WaitingComponent,
     COMPONENTS.WelcomeComponent,
     COMPONENTS.ShowOpenReferralsComponent,
@@ -31,7 +33,7 @@ import * as FIREBASE from './firebase';
   imports: [
     CommonModule,
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     //HttpModule,
     MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTING.routes),
