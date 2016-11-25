@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'ra-createcontact',
@@ -7,7 +8,23 @@ import { Component } from '@angular/core';
 })
 export class CreateContactComponent {
 
-  constructor() {
+  formGroup: FormGroup;
+
+  constructor(fb: FormBuilder) {
+    this.formGroup = fb.group({
+      name: 'Gary',
+      email: '',
+      notes: '',
+    });
+  }
+
+
+  onSubmit() {
+    console.log(this.formGroup.value);
+  }
+
+  log(value) {
+    console.log(value);
   }
 
 }
