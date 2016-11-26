@@ -38,7 +38,7 @@ export class DataReaderService {
   }
 
   private loadPartners() {
-    this.partners = this.af.database.list("/partners")
+    this.partners = this.af.database.list("/partners",  { query: { orderByChild: 'name' } })
       .map((partners: any[]) => {
         return partners.reduce((list, p) => { return [...list, { pid: p.$key, name: p.name }]; }, []);
       });
