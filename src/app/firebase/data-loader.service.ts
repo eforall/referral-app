@@ -10,6 +10,10 @@ import { AuthService } from './auth.service';
 import { Partner } from './partner';
 import { Member } from './member';
 
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/state';
+import * as ACTIONS from '../store/actions';
+
 
 @Injectable()
 export class DataLoaderService {
@@ -17,7 +21,9 @@ export class DataLoaderService {
   private partners: Observable<Partner[]>;
   private members:  Observable<Member[]>;
 
-  constructor(private af: AngularFire, private auth: AuthService) {
+  constructor(private af: AngularFire,
+              private auth: AuthService,
+              private store: Store<AppState>) {
     this.auth.user.subscribe((user) => {
       if (user) this.loadData();
     });
@@ -31,19 +37,18 @@ export class DataLoaderService {
     this.loadMembers();
   }
 
-
   private loadPartners() {
     this.partners = this.af.database.list("/partners")
       .map((partners: any[]) => {
         return partners.reduce((list, p) => { return [...list, { pid: p.$key, name: p.name }]; }, []);
       });
 
-    this.partners.subscribe(partners => console.log("PARTNERS", partners));
+    this.partners.subscribe(partners => this.store.dispatch(new ACTIONS.UpdatePartnersAction(partners)));
   }
 
 
   private loadMembers() {
-        this.members = Observable.combineLatest(
+    this.members = Observable.combineLatest(
       this.partners,
       this.af.database.list("/members"), 
       this.af.database.object("/access"),

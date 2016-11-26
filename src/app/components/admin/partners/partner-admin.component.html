@@ -1,1 +1,16 @@
-Partner Administration
+
+<div>
+    <h4>Existing Partners</h4>
+    <partner-list [partners]="partners | async"></partner-list>
+</div>
+
+<br>
+
+<div>
+    <h4>Add a New Partner</h4>
+    <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+        <md-input formControlName="name" placeholder="Partner Name"></md-input>
+        <button type="submit" md-raised-button color="primary">Add</button>
+        <br><span *ngIf="showRequiredError()" class="alert alert-danger">Missing Partner Name!</span>
+    </form>
+</div>

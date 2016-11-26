@@ -87,6 +87,20 @@ div.md-sidenav-backdrop.md-sidenav-shown {
   font-size: 20px;
 }
 
+.alert {
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-left: 10px solid transparent;
+    border-radius: 4px;
+    background-color: #FFF;
+}
+
+.alert-danger {
+    color: #a94442;
+    border-color: #a94442;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

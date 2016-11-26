@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './store';
 
 import * as COMPONENTS from './components';
+import * as DUMB_COMPONENTS from './components/dumb';
 import * as DIRECTIVES from './directives';
 import * as ROUTING from './routing';
 import * as FIREBASE from './firebase';
@@ -27,6 +28,7 @@ import * as FIREBASE from './firebase';
     COMPONENTS.CreateContactComponent,
     COMPONENTS.FindContactsComponent,
     COMPONENTS.ViewContactComponent,
+    DUMB_COMPONENTS.PartnerList,
     DIRECTIVES.AdminUserOnlyDirective,
     DIRECTIVES.PartnerUserOnlyDirective,
   ],

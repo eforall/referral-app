@@ -19,7 +19,7 @@ export const ACTIONS = {
  * Players
  */
 
-export class UpdatePlayersAction implements Action {
+export class UpdatePartnersAction implements Action {
     type = ACTIONS.UPDATE_PARTNERS;
     constructor(public payload: Partner[]) {}
 }
@@ -58,7 +58,7 @@ export class ResetLoginAction implements Action {
 
 
 export type PlayersAction
-    = UpdatePlayersAction
+    = UpdatePartnersAction
     | UpdateUsersAction
     | UpdateContactsAction
     | ResetLoginAction;
