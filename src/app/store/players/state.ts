@@ -1,5 +1,5 @@
 /**
- * NOTE: This app currently loads ALL of the partners, users and contacts.  This was a design
+ * NOTE: This app currently loads ALL of the partners, members and contacts.  This was a design
  * choice to help keep the project within budget.  This is OK because the use is expected to
  * be fairly low.  If the application use grows then it is recommended to adjust this to load
  * what is needed on demand.
@@ -10,7 +10,7 @@ export interface Partner {
     name: string,
 }
 
-export interface User {
+export interface Member {
     uid: string,
     name: string,
     email: string,
@@ -39,12 +39,12 @@ export interface Contact {
 
 export interface PlayersState {
     partners: Partner[],
-    users: User[],
+    members: Member[],
     contacts: Contact[],
 }
 
 export const initialState: PlayersState = {
     partners: [],
-    users: [],
+    members: [],
     contacts: [],
 }

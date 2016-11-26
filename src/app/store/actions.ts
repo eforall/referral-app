@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { actionType } from '../utils';
-import { LoginProfile, Partner, User, Contact } from './state';
+import { LoginProfile, Partner, Member, Contact } from './state';
 
 export const ACTIONS = {
     //Login actions
@@ -10,7 +10,7 @@ export const ACTIONS = {
 
     //Partner actions
     UPDATE_PARTNERS: actionType('[UpdatePartnersAction]'),
-    UPDATE_USERS: actionType('[UpdateUsersAction]'),
+    UPDATE_MEMBERS: actionType('[UpdateMembersAction]'),
     UPDATE_CONTACTS: actionType('[UpdateContactsAction]'),
 }
 
@@ -24,9 +24,9 @@ export class UpdatePartnersAction implements Action {
     constructor(public payload: Partner[]) {}
 }
 
-export class UpdateUsersAction implements Action {
-    type = ACTIONS.UPDATE_USERS;
-    constructor(public payload: User[]) {}
+export class UpdateMembersAction implements Action {
+    type = ACTIONS.UPDATE_MEMBERS;
+    constructor(public payload: Member[]) {}
 }
 
 export class UpdateContactsAction implements Action {
@@ -59,7 +59,7 @@ export class ResetLoginAction implements Action {
 
 export type PlayersAction
     = UpdatePartnersAction
-    | UpdateUsersAction
+    | UpdateMembersAction
     | UpdateContactsAction
     | ResetLoginAction;
 

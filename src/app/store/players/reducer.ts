@@ -1,4 +1,4 @@
-import { Partner, User, Contact, initialState } from './state';
+import { Partner, Member, Contact, initialState } from './state';
 import { ACTIONS, PlayersAction } from '../actions';
 
 export function playersReducer(state = initialState, action: PlayersAction) {
@@ -13,7 +13,7 @@ export function playersReducer(state = initialState, action: PlayersAction) {
             return Object.assign({}, state, { partners: action.payload });
         }
 
-        case ACTIONS.UPDATE_USERS: {
+        case ACTIONS.UPDATE_MEMBERS: {
             return Object.assign({}, state, { users: action.payload });
         }
 
