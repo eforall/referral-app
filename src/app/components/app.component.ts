@@ -10,7 +10,14 @@ import * as FIREBASE from '../firebase';
 export class AppComponent {
   @ViewChild('sidenav') sidenav: MdSidenav;
 
-  constructor(private auth: FIREBASE.AuthService, private data: FIREBASE.DataService) {
+  /**
+   * The DataReaderService is not used directly in this class.  However, is still must
+   * be injected, which causes it to be instantiated.  It then loads the data once the
+   * auth has completed.
+   */
+  constructor(private auth: FIREBASE.AuthService,
+              private reader: FIREBASE.DataReaderService,
+              private writer: FIREBASE.DataWriterService,) {
   }
 
 }

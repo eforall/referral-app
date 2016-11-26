@@ -44,8 +44,8 @@ import * as FIREBASE from './firebase';
   ],
   providers: [
     FIREBASE.AuthService,
-    FIREBASE.DataService,
-    FIREBASE.DataLoaderService,
+    FIREBASE.DataReaderService,
+    FIREBASE.DataWriterService,
     ROUTING.ConfiguredUserGuard,
     ROUTING.AdminUserGuard,
   ],

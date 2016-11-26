@@ -5,5 +5,5 @@ export { firebaseConfig } from './firebase-config'
 export { authConfig } from './auth-config'
 
 export { AuthService } from './auth.service';
-export { DataService } from './data.service';
-export { DataLoaderService } from './data-loader.service';
+export { DataReaderService } from './data-reader.service';
+export { DataWriterService } from './data-writer.service';

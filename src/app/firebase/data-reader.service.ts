@@ -16,7 +16,7 @@ import * as ACTIONS from '../store/actions';
 
 
 @Injectable()
-export class DataLoaderService {
+export class DataReaderService {
 
   private partners: Observable<Partner[]>;
   private members:  Observable<Member[]>;
