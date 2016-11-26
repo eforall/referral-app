@@ -1,19 +1,19 @@
 import { initialState } from './state';
-import { ACTIONS, LoginAction } from '../actions';
+import * as ACTIONS from '../actions';
 
-export function loginReducer(state = initialState, action: LoginAction) {
+export function loginReducer(state = initialState, action: ACTIONS.LoginAction) {
 
     switch (action.type) {
 
-        case ACTIONS.SET_LOGIN: {
+        case ACTIONS.TYPES.SET_LOGIN: {
             return Object.assign({}, state, { profile: action.payload });
         }
 
-        case ACTIONS.SET_ADMIN: {
+        case ACTIONS.TYPES.SET_ADMIN: {
             return Object.assign({}, state, { admin: action.payload });
         }
 
-        case ACTIONS.RESET_LOGIN: {
+        case ACTIONS.TYPES.RESET_LOGIN: {
             return Object.assign({}, state, { profile: undefined });
         }
 

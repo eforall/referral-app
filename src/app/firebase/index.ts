@@ -1,5 +1,6 @@
 export { Partner } from './partner';
 export { Member } from './member';
+export { Contact } from './contact';
 
 export { firebaseConfig } from './firebase-config'
 export { authConfig } from './auth-config'

@@ -18,15 +18,20 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 
 import { AppState } from './state';
+export { AppState } from './state';
 
 
 /*** Reducers ***/
 import { loginReducer } from './login/reducer';
-import { playersReducer } from './players/reducer';
+import { partnersReducer } from './reducers/partners.reducer';
+import { membersReducer } from './reducers/members.reducer';
+import { contactsReducer } from './reducers/contacts.reducer';
 
 const reducers = {
     login: loginReducer,
-    players: playersReducer,
+    partners: partnersReducer,
+    members: membersReducer,
+    contacts: contactsReducer,
 }
 
 

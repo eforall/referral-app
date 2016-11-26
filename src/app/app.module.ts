@@ -7,8 +7,8 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './store';
 
+import * as STORE from './store';
 import * as COMPONENTS from './components';
 import * as DUMB_COMPONENTS from './components/dumb';
 import * as DIRECTIVES from './directives';
@@ -40,7 +40,7 @@ import * as FIREBASE from './firebase';
     MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTING.routes),
     AngularFireModule.initializeApp(FIREBASE.firebaseConfig, FIREBASE.authConfig),
-    StoreModule.provideStore(reducer),
+    StoreModule.provideStore(STORE.reducer),
   ],
   providers: [
     FIREBASE.AuthService,

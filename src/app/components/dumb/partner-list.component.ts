@@ -6,8 +6,7 @@ import { Component, Input, Output } from '@angular/core';
         <md-list>
             <md-list-item *ngFor="let partner of partners">
                 <md-icon md-list-avatar>group</md-icon>
-                <h4 md-line> {{partner.name}} </h4>
-                <small md-line> {{partner.pid}} </small>
+                <h2 md-line title="{{partner.pid}}"> {{partner.name}} </h2>
             </md-list-item>
         </md-list>
     `,
@@ -18,7 +17,7 @@ import { Component, Input, Output } from '@angular/core';
     }
     .material-icons {
         color: #BBB;
-        font-size: 40px;
+        font-size: 30px;
     }
     `]
 })

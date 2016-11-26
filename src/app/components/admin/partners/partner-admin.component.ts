@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/state';
-import { DataWriterService } from '../../../firebase';
+
+import * as STORE from '../../../store';
+import * as FIREBASE from '../../../firebase';
 
 @Component({
   selector: 'ra-partneradmin',
@@ -14,11 +15,11 @@ export class PartnersAdminComponent {
   partners;
   form: FormGroup;
 
-  constructor(private store: Store<AppState>,
+  constructor(private store: Store<STORE.AppState>,
               private fb: FormBuilder,
-              private writer: DataWriterService) {
+              private writer: FIREBASE.DataWriterService) {
 
-    this.partners = store.select(store => store.players.partners);
+    this.partners = store.select(store => store.partners);
     this.form = fb.group({ name: ['', Validators.required] });
 
   }

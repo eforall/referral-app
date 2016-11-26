@@ -10,7 +10,7 @@ import { AppState } from '../../../store/state';
 export class MembersAdminComponent {
 
   constructor(private store: Store<AppState>) {
-    store.select(store => store.players.partners);
+    store.select(store => store.members);
   }
 
 }

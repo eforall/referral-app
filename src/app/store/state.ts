@@ -1,10 +1,13 @@
 export { LoginProfile } from  './login/state';
-export { Partner, Member, Contact } from './players/state';
+
+import { Partner, Member, Contact } from '../firebase';
+export { Partner, Member, Contact } from '../firebase';
 
 import { LoginState } from './login/state';
-import { PlayersState } from './players/state';
 
 export interface AppState {
     login: LoginState,
-    players: PlayersState,
+    partners: Partner[],
+    members: Member[],
+    contacts: Contact[],
 }

@@ -1,14 +1,21 @@
-import 'rxjs/rx';
+/**
+ * NOTE: This app currently loads ALL of the partners, members and contacts.  This was a design
+ * choice to help keep the project within budget.  This is OK because the use is expected to
+ * be fairly low.  If the application use grows then it is recommended to adjust this to load
+ * what is needed on demand.
+ */
 
+import 'rxjs/rx';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from './auth.service';
 
 import { Partner } from './partner';
 import { Member } from './member';
+import { Contact } from './contact';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/state';
@@ -59,7 +66,7 @@ export class DataReaderService {
 
       });
     
-    this.members.subscribe(members => console.log("MEMBERS", members));
+    this.members.subscribe(members => this.store.dispatch(new ACTIONS.UpdateMembersAction(members)));
   }
 
 
