@@ -11,7 +11,7 @@ export function partnersReducer(state = INITIAL_STATE, action: ACTIONS.PartnersA
             return INITIAL_STATE;
         }
 
-        case ACTIONS.TYPES.UPDATE_PARTNERS: {
+        case ACTIONS.TYPES.LOAD_PARTNERS: {
             return action.payload;
         }
 

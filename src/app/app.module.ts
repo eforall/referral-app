@@ -29,6 +29,7 @@ import * as FIREBASE from './firebase';
     COMPONENTS.FindContactsComponent,
     COMPONENTS.ViewContactComponent,
     DUMB_COMPONENTS.PartnerList,
+    DUMB_COMPONENTS.PartnerSelect,
     DIRECTIVES.AdminUserOnlyDirective,
     DIRECTIVES.PartnerUserOnlyDirective,
   ],
@@ -48,6 +49,7 @@ import * as FIREBASE from './firebase';
     FIREBASE.DataWriterService,
     ROUTING.ConfiguredUserGuard,
     ROUTING.AdminUserGuard,
+    STORE.StoreService,
   ],
   bootstrap: [
     COMPONENTS.AppComponent

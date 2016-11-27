@@ -4,3 +4,4 @@
 */
 
 export { PartnerList } from './partner-list.component';
+export { PartnerSelect } from './partner-select.component';

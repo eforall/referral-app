@@ -16,10 +16,8 @@ import { AuthService } from './auth.service';
 import { Partner } from './partner';
 import { Member } from './member';
 import { Contact } from './contact';
+import { StoreService } from '../store/store.service';
 
-import { Store } from '@ngrx/store';
-import { AppState } from '../store/state';
-import * as ACTIONS from '../store/actions';
 
 
 @Injectable()
@@ -30,14 +28,14 @@ export class DataReaderService {
 
   constructor(private af: AngularFire,
               private auth: AuthService,
-              private store: Store<AppState>) {
+              private store: StoreService) {
+
     this.auth.user.subscribe((user) => {
       if (user) this.loadData();
     });
   }
 
   private loadData() {
-    console.log("loadData!");
     if (this.partners) return;  //Skip if already loaded
 
     this.loadPartners();
@@ -50,7 +48,7 @@ export class DataReaderService {
         return partners.reduce((list, p) => { return [...list, { pid: p.$key, name: p.name }]; }, []);
       });
 
-    this.partners.subscribe(partners => this.store.dispatch(new ACTIONS.UpdatePartnersAction(partners)));
+    this.partners.subscribe(partners => this.store.loadPartners(partners));
   }
 
 
@@ -66,7 +64,7 @@ export class DataReaderService {
 
       });
     
-    this.members.subscribe(members => this.store.dispatch(new ACTIONS.UpdateMembersAction(members)));
+    this.members.subscribe(members => this.store.loadMembers(members));
   }
 
 

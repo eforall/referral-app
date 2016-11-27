@@ -11,7 +11,7 @@ export function membersReducer(state = INITIAL_STATE, action: ACTIONS.MembersAct
             return INITIAL_STATE;
         }
 
-        case ACTIONS.TYPES.UPDATE_MEMBERS: {
+        case ACTIONS.TYPES.LOAD_MEMBERS: {
             return action.payload;
         }
 

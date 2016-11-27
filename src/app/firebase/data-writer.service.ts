@@ -21,5 +21,10 @@ export class DataWriterService {
   addPartner(name: string) {
     this.partners.push({name});
   }
+  
+  updateMemberPartner(uid: string, pid: string) {
+      if (pid == '') pid = null;
+      this.af.database.object("/access/" + uid + "/pid").set(pid);
+  }
 
 }

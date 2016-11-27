@@ -16,10 +16,10 @@ import { compose } from '@ngrx/core/compose';
 import { combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
-
 import { AppState } from './state';
 export { AppState } from './state';
 
+export { StoreService } from './store.service';
 
 /*** Reducers ***/
 import { loginReducer } from './login/reducer';

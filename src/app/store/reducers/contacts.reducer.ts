@@ -11,7 +11,7 @@ export function contactsReducer(state = INITIAL_STATE, action: ACTIONS.ContactsA
             return INITIAL_STATE;
         }
 
-        case ACTIONS.TYPES.UPDATE_CONTACTS: {
+        case ACTIONS.TYPES.LOAD_CONTACTS: {
             return action.payload;
         }
 

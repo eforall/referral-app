@@ -7,9 +7,9 @@ export const TYPES = {
     SET_ADMIN: actionType('[SetAdminAction]'),
     RESET_LOGIN: actionType('[ResetLoginAction]'),
 
-    UPDATE_PARTNERS: actionType('[UpdatePartnersAction]'),
-    UPDATE_MEMBERS: actionType('[UpdateMembersAction]'),
-    UPDATE_CONTACTS: actionType('[UpdateContactsAction]'),
+    LOAD_PARTNERS: actionType('[LoadPartnersAction]'),
+    LOAD_MEMBERS: actionType('[LoadMembersAction]'),
+    LOAD_CONTACTS: actionType('[LoadContactsAction]'),
 }
 
 
@@ -17,18 +17,18 @@ export const TYPES = {
  * Players
  */
 
-export class UpdatePartnersAction implements Action {
-    type = TYPES.UPDATE_PARTNERS;
+export class LoadPartnersAction implements Action {
+    type = TYPES.LOAD_PARTNERS;
     constructor(public payload: Partner[]) {}
 }
 
-export class UpdateMembersAction implements Action {
-    type = TYPES.UPDATE_MEMBERS;
+export class LoadMembersAction implements Action {
+    type = TYPES.LOAD_MEMBERS;
     constructor(public payload: Member[]) {}
 }
 
-export class UpdateContactsAction implements Action {
-    type = TYPES.UPDATE_CONTACTS;
+export class LoadContactsAction implements Action {
+    type = TYPES.LOAD_CONTACTS;
     constructor(public payload: Contact[]) {}
 }
 
@@ -56,15 +56,15 @@ export class ResetLoginAction implements Action {
 
 
 export type PartnersAction
-    = UpdatePartnersAction
+    = LoadPartnersAction
     | ResetLoginAction;
 
 export type MembersAction
-    = UpdateMembersAction
+    = LoadMembersAction
     | ResetLoginAction;
 
 export type ContactsAction
-    = UpdateContactsAction
+    = LoadContactsAction
     | ResetLoginAction;
 
 export type LoginAction

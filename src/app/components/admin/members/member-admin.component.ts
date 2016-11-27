@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/state';
+import { StoreService } from '../../../store/store.service';
+import { DataWriterService } from '../../../firebase/data-writer.service';
 
 @Component({
   selector: 'ra-memberadmin',
@@ -9,8 +9,16 @@ import { AppState } from '../../../store/state';
 })
 export class MembersAdminComponent {
 
-  constructor(private store: Store<AppState>) {
-    store.select(store => store.members);
+  partners;
+  members;
+
+  constructor(private store: StoreService, private data: DataWriterService) {
+    this.partners = store.select(store => store.partners);
+    this.members = store.select(store => store.members);
+  }
+
+  changePartner(uid, pid) {
+    this.data.updateMemberPartner(uid, pid);
   }
 
 }
