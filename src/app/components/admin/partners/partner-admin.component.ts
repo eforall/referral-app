@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 
-import * as STORE from '../../../store';
+import { StoreService } from '../../../store/store.service';
 import * as FIREBASE from '../../../firebase';
 
 @Component({
@@ -15,7 +14,7 @@ export class PartnersAdminComponent {
   partners;
   form: FormGroup;
 
-  constructor(private store: Store<STORE.AppState>,
+  constructor(private store: StoreService,
               private fb: FormBuilder,
               private writer: FIREBASE.DataWriterService) {
 

@@ -80,7 +80,6 @@ export class DataReaderService {
       if (a) {
         let p = partnerMap[a.pid];
         if (p) {
-          console.log("a.pid", a.pid);
           member.pid = a.pid;
         }
       }
