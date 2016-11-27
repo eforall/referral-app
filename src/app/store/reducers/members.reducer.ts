@@ -1,4 +1,4 @@
-import { Partner, Member, Contact } from '../../firebase/';
+import { Member } from '../../firebase/';
 import * as ACTIONS from '../actions';
 
 const INITIAL_STATE: Member[] = [];
