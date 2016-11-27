@@ -44,12 +44,12 @@ import * as FIREBASE from './firebase';
     StoreModule.provideStore(STORE.reducer),
   ],
   providers: [
+    STORE.StoreService,
     FIREBASE.AuthService,
     FIREBASE.DataReaderService,
     FIREBASE.DataWriterService,
     ROUTING.ConfiguredUserGuard,
     ROUTING.AdminUserGuard,
-    STORE.StoreService,
   ],
   bootstrap: [
     COMPONENTS.AppComponent

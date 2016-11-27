@@ -1,3 +1,4 @@
+export { User } from './user';
 export { Partner } from './partner';
 export { Member } from './member';
 export { Contact } from './contact';

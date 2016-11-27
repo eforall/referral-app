@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
-
-import { Store } from '@ngrx/store';
-import { AppState, LoginProfile } from '../store/state';
-import { SetLoginAction, ResetLoginAction } from '../store/actions';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { User } from './user';
+import { StoreService } from '../store/store.service';
+
 
 @Injectable()
 export class AuthService {
 
-  public user: Observable<User>;
-  public userSnapshot: User = undefined;
+  //public user: Observable<User>;
 
-  constructor(private store: Store<AppState>,
+  constructor(private store: StoreService,
               private af: AngularFire,
               private router: Router) {
 
-    this.user = af.auth
+    let user = af.auth
         .map((auth) => {
           if (auth == undefined || auth.auth == undefined) return undefined;
           return {
@@ -45,17 +41,18 @@ export class AuthService {
                     })
         });
 
-        this.user.subscribe((user) => {
-          this.userSnapshot = user;
+    user.subscribe((user) => {
 
-          if (user == undefined) {
-            af.auth.login();  //always logged in
-          }
-          else {
-            if (user.pid) this.router.navigate(["/referrals"]);
-            else this.router.navigate(["/welcome"]);
-          }
-        });
+      this.store.setUser(user);
+
+      if (user == undefined) {
+        af.auth.login();  //always logged in
+      }
+      else {
+        if (user.pid) this.router.navigate(["/referrals"]);
+        else this.router.navigate(["/welcome"]);
+      }
+    });
 
   }
 

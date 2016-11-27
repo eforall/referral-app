@@ -1,21 +1,19 @@
 import { Action } from '@ngrx/store';
 import { actionType } from '../utils';
-import { LoginProfile, Partner, Member, Contact } from './state';
+import { User, Partner, Member, Contact } from './state';
 
 export const TYPES = {
-    SET_LOGIN: actionType('[SetLoginAction]'),
-    SET_ADMIN: actionType('[SetAdminAction]'),
-    RESET_LOGIN: actionType('[ResetLoginAction]'),
-
-    LOAD_PARTNERS: actionType('[LoadPartnersAction]'),
-    LOAD_MEMBERS: actionType('[LoadMembersAction]'),
-    LOAD_CONTACTS: actionType('[LoadContactsAction]'),
+    SET_USER: actionType('SetUser'),
+    LOAD_PARTNERS: actionType('LoadPartners'),
+    LOAD_MEMBERS: actionType('LoadMembers'),
+    LOAD_CONTACTS: actionType('LoadContacts'),
 }
 
 
-/**
- * Players
- */
+export class SetUserAction implements Action {
+    type = TYPES.SET_USER;
+    constructor(public payload?: User) {}
+}
 
 export class LoadPartnersAction implements Action {
     type = TYPES.LOAD_PARTNERS;
@@ -33,41 +31,17 @@ export class LoadContactsAction implements Action {
 }
 
 
-/**
- * Login
- */
-
-export class SetLoginAction implements Action {
-    type = TYPES.SET_LOGIN;
-    constructor(public payload: LoginProfile) {}
-}
-
-export class SetAdminAction implements Action {
-    type = TYPES.SET_ADMIN;
-    constructor(public payload: boolean) {}
-}
-
-export class ResetLoginAction implements Action {
-    type = TYPES.RESET_LOGIN;
-    public payload = undefined;  //unused
-    constructor() {}
-}
-
-
-
 export type PartnersAction
     = LoadPartnersAction
-    | ResetLoginAction;
+    | SetUserAction;
 
 export type MembersAction
     = LoadMembersAction
-    | ResetLoginAction;
+    | SetUserAction;
 
 export type ContactsAction
     = LoadContactsAction
-    | ResetLoginAction;
+    | SetUserAction;
 
-export type LoginAction
-    = SetLoginAction
-    | SetAdminAction
-    | ResetLoginAction;
+export type UserAction
+    = SetUserAction;

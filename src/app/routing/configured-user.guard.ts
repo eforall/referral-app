@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from '../firebase';
+import { StoreService } from '../store/store.service';
 
 
 
@@ -14,12 +14,12 @@ import { AuthService } from '../firebase';
 @Injectable()
 export class ConfiguredUserGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private store: StoreService, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.auth.user.map((user) => {
-        return !!user.pid;
+    return this.store.select(store => store.user).map((user) => {
+        return !!user && !!user.pid;
     });
   }
 

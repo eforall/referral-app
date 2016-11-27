@@ -10,10 +10,11 @@ export class StoreService {
 
   constructor(private store: Store<AppState>) {}
 
-  select(path: any) {
-      return this.store.select(path);
-  }
+  select = this.store.select;
 
+  setUser(user: FIREBASE.User) {
+      this.store.dispatch(new ACTIONS.SetUserAction(user));
+  }
   loadPartners(partners: FIREBASE.Partner[]) {
       this.store.dispatch(new ACTIONS.LoadPartnersAction(partners));
   }

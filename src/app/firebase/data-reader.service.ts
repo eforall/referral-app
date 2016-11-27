@@ -11,8 +11,6 @@ import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
 
-import { AuthService } from './auth.service';
-
 import { Partner } from './partner';
 import { Member } from './member';
 import { Contact } from './contact';
@@ -27,10 +25,9 @@ export class DataReaderService {
   private members:  Observable<Member[]>;
 
   constructor(private af: AngularFire,
-              private auth: AuthService,
               private store: StoreService) {
 
-    this.auth.user.subscribe((user) => {
+    this.store.select(store => store.user).subscribe((user) => {
       if (user) this.loadData();
     });
   }
