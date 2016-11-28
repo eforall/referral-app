@@ -1,12 +1,13 @@
 import { Action } from '@ngrx/store';
 import { actionType } from '../utils';
-import { User, Partner, Member, Contact } from './state';
+import { User, Partner, Member, Contact, ContactDetail } from './state';
 
 export const TYPES = {
     SET_USER: actionType('SetUser'),
     LOAD_PARTNERS: actionType('LoadPartners'),
     LOAD_MEMBERS: actionType('LoadMembers'),
     LOAD_CONTACTS: actionType('LoadContacts'),
+    SET_CONTACT_DETAIL: actionType('SetContactDetail'),
 }
 
 
@@ -30,6 +31,11 @@ export class LoadContactsAction implements Action {
     constructor(public payload: Contact[]) {}
 }
 
+export class SetContactDetailAction implements Action {
+    type = TYPES.SET_CONTACT_DETAIL;
+    constructor(public payload: ContactDetail) {}
+}
+
 
 export type PartnersAction
     = LoadPartnersAction
@@ -42,6 +48,9 @@ export type MembersAction
 export type ContactsAction
     = LoadContactsAction
     | SetUserAction;
+
+export type ContactDetailsAction
+    = SetContactDetailAction
 
 export type UserAction
     = SetUserAction;

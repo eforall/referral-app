@@ -24,5 +24,8 @@ export class StoreService {
   loadContacts(contacts: FIREBASE.Contact[]) {
       this.store.dispatch(new ACTIONS.LoadContactsAction(contacts));
   }
+  contactDetail(contactDetail: FIREBASE.ContactDetail) {
+      this.store.dispatch(new ACTIONS.SetContactDetailAction(contactDetail));
+  }
 
 }

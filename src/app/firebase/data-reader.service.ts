@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 import { Partner } from './partner';
 import { Member } from './member';
-import { Contact } from './contact';
+import { Contact, ContactDetail } from './contact';
 import { StoreService } from '../store/store.service';
 
 
@@ -22,7 +22,7 @@ import { StoreService } from '../store/store.service';
 export class DataReaderService {
 
   private partners: Observable<Partner[]>;
-  private members:  Observable<Member[]>;
+  private contactDetails: any = {};
 
   constructor(private af: AngularFire,
               private store: StoreService) {
@@ -51,7 +51,7 @@ export class DataReaderService {
 
 
   private loadMembers() {
-    this.members = Observable.combineLatest(
+    let members = Observable.combineLatest(
       this.partners,
       this.af.database.list("/members"), 
       this.af.database.object("/access"),
@@ -62,7 +62,7 @@ export class DataReaderService {
 
       });
     
-    this.members.subscribe(members => this.store.loadMembers(members));
+    members.subscribe(members => this.store.loadMembers(members));
   }
 
 
@@ -94,4 +94,40 @@ export class DataReaderService {
     contacts.subscribe(contacts => this.store.loadContacts(contacts));
   }
 
+
+  public loadContactDetail(cid: string) {
+    if (this.contactDetails[cid] === undefined) {
+      this.contactDetails[cid] = this.af.database.list("/contact-details/" + cid).subscribe((contactDetails: ContactDetail[]) => {
+
+        let cd: ContactDetail = {
+          cid,
+          name: "",
+          business: "",
+          email: "",
+          phone: "",
+          contactMethod: "",
+          language: "",
+          gender: "",
+          race: "",
+          website: "",
+          businessStatus: "",
+          address: "",
+          immigrant: false,
+          nonNativeEnglish: false,
+          lowIncome: false,
+          wasUnemployed: false,
+          veteran: false,
+        };
+        
+        //
+        // Merge the individual audit records into one current set of details
+        //
+        cd = contactDetails.reduce((previous, current) => {
+          return Object.assign(current, previous);
+        }, cd);
+
+        this.store.contactDetail(cd);
+      });
+    }
+  }
 }

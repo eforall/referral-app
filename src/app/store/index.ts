@@ -26,12 +26,14 @@ import { userReducer } from './reducers/user.reducer';
 import { partnersReducer } from './reducers/partners.reducer';
 import { membersReducer } from './reducers/members.reducer';
 import { contactsReducer } from './reducers/contacts.reducer';
+import { contactDetailsReducer } from './reducers/contact-details.reducer';
 
 const reducers = {
   user: userReducer,
   partners: partnersReducer,
   members: membersReducer,
   contacts: contactsReducer,
+  contactDetails: contactDetailsReducer,
 }
 
 

@@ -38,7 +38,7 @@ export class DataWriterService {
     if (this.uid === undefined) return "";
 
     let key = this.af.database.list("/contacts").push({name, business}).key;
-    this.af.database.list("/contact-data").push({
+    this.af.database.list("/contact-details/" + key).push({
       uid: this.uid,
       timestamp: TIMESTAMP,
       name,

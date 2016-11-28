@@ -20,3 +20,7 @@ export interface ContactDetail extends Contact {
     wasUnemployed: boolean,
     veteran: boolean,
 }
+
+export interface ContactDetails {
+    [cid: string]: ContactDetail
+}
