@@ -15,7 +15,8 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles/core.css",
+        "styles/material-table.css"
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js"

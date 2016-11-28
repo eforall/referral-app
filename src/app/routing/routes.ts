@@ -43,7 +43,7 @@ export const routes: Routes = [
           },
           {
             path: ':cid',
-            component: COMPONENTS.ViewContactComponent,
+            component: COMPONENTS.EditContactComponent,
           },
         ]
       },

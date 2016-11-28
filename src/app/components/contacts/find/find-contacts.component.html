@@ -1,1 +1,16 @@
-Find Contacts
+<div class="mt-wrapper">
+  
+  <div class="mt-table">
+    
+    <div class="mt-row header">
+      <div class="mt-cell">Name</div>
+      <div class="mt-cell">Business</div>
+    </div>
+    
+    <div class="mt-row clickable" *ngFor="let contact of contacts" routerLink="/contacts/{{contact.cid}}">
+      <div class="mt-cell">{{contact.name}}</div>
+      <div class="mt-cell">{{contact.business}}</div>
+    </div>
+  </div>
+    
+</div>

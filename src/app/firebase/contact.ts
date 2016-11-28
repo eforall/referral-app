@@ -1,13 +1,16 @@
 export interface Contact {
     cid: string,
     name: string,
+    business: string,
+}
+
+export interface ContactDetail extends Contact {
     email: string,
     phone: string,
     contactMethod: string,
     language: string,
     gender: string,
     race: string,
-    business: string,
     website: string,
     businessStatus: string,
     address: string,

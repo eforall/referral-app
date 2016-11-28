@@ -37,6 +37,7 @@ export class DataReaderService {
 
     this.loadPartners();
     this.loadMembers();
+    this.loadContacts();
   }
 
   private loadPartners() {
@@ -81,6 +82,16 @@ export class DataReaderService {
         }
       }
     }
+  }
+
+
+  private loadContacts() {
+    let contacts = this.af.database.list("/contacts",  { query: { orderByChild: 'name' } })
+      .map((contacts: any[]) => {
+        return contacts.reduce((list, c) => { return [...list, { cid: c.$key, name: c.name, business: c.business }]; }, []);
+      });
+
+    contacts.subscribe(contacts => this.store.loadContacts(contacts));
   }
 
 }
