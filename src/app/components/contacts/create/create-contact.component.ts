@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DataWriterService } from '../../../firebase';
 
 @Component({
   selector: 'ra-createcontact',
@@ -8,23 +10,22 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class CreateContactComponent {
 
-  formGroup: FormGroup;
+  form: FormGroup;
 
-  constructor(fb: FormBuilder) {
-    this.formGroup = fb.group({
-      name: 'Gary',
-      email: '',
-      notes: '',
+  constructor(private fb: FormBuilder,
+              private data: DataWriterService,
+              private router: Router) {
+
+    this.form = fb.group({
+      name: ['', Validators.required],
+      business: ['', Validators.required],
     });
   }
 
-
   onSubmit() {
-    console.log(this.formGroup.value);
-  }
-
-  log(value) {
-    console.log(value);
+    if (this.form.invalid) return;
+    var cid = this.data.addContact(this.form.value.name, this.form.value.business);
+    this.router.navigate(["/contacts/" + cid]);
   }
 
 }

@@ -1,17 +1,9 @@
 <h2>Create Contact</h2>
 
-<md-card>
-    <form novalidate [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-        <md-input formControlName="name" placeholder="name" #refName (change)="log(refName)"></md-input>
-        <b>{{ refName }}</b>
-        <md-input formControlName="email" placeholder="email"></md-input>
-        <small><label>notes</label></small>
-        <textarea formControlName="notes" placeholder="notes" md-autosize></textarea>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-    </form>
-</md-card>
-
-<md-card>
-    <p>form: {{ formGroup.value | json }}</p>
-</md-card>
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+    <md-input formControlName="name" placeholder="Name  (required)"></md-input>
+    <md-input formControlName="business" placeholder="Business  (required)"></md-input>
+    <div class="buttons">
+        <button type="submit" md-raised-button color="primary" [disabled]="!form.valid">Create</button>
+    </div>
+</form>
