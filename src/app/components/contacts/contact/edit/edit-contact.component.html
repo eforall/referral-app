@@ -1,3 +1,61 @@
-Edit Contact
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="columns">
+        <div class="column">
+            <md-input formControlName="name" placeholder="Name  (required)"></md-input>
+            <md-input formControlName="email" placeholder="Email"></md-input>
+            <md-input formControlName="phone" placeholder="Phone"></md-input>
+            <select formControlName="contact_method">
+                <option value="">(contact method)</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+            </select>
+            <select formControlName="language">
+                <option value="">(language)</option>
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+            </select>
+            <select formControlName="gender">
+                <option value="">(gender)</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+            <select formControlName="race">
+                <option value="">(race)</option>
+                <option value="asian">Asian</option>
+                <option value="black">Black / African American</option>
+                <option value="native_american">Native American</option>
+                <option value="pacific_islander">Pacific Islander</option>
+                <option value="white">White</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="column">
+            <md-input formControlName="business" placeholder="Business  (required)"></md-input>
+            <md-input formControlName="website" placeholder="Website"></md-input>
+
+            <select formControlName="business_status">
+                <option value="">(business status)</option>
+                <option value="prospective">Prospective</option>
+                <option value="pre_startup">Pre-Startup</option>
+                <option value="startup">StartUp</option>
+                <option value="established">Established</option>
+            </select>
+
+            Address:
+            <textarea formControlName="address"></textarea>
+            
+            <md-checkbox formControlName="immigrant">Immigrant</md-checkbox><br>
+            <md-checkbox formControlName="non_native_english">Non-Native English</md-checkbox><br>
+            <md-checkbox formControlName="low_income">Low Income</md-checkbox><br>
+            <md-checkbox formControlName="was_unemployed">Was Enumployed</md-checkbox><br>
+            <md-checkbox formControlName="veteran">Veteran</md-checkbox>
+        </div>    
+    </div>
+
+    <div class="buttons">
+        <button type="submit" md-raised-button color="primary" [disabled]="!form.valid">Create</button>
+    </div>
+</form>
+
 
 {{ contactDetail | json }}

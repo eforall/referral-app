@@ -1,0 +1,29 @@
+.columns {
+    display: flex;
+    padding: 5px;
+}
+
+.column {
+    flex: 1;
+    margin: 5px;
+}
+
+textarea, select, .md-text, .md-checkbox-layout {
+    display: block;
+    width: 100%;
+}
+
+textarea, select, span.md-checkbox-layout {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 16px 0;
+}
+
+textarea {
+    min-height: 60px;
+}
+
+select.unselected {
+    color: #999;
+}
+
