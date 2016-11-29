@@ -123,7 +123,7 @@ export class DataReaderService {
         // Merge the individual audit records into one current set of details
         //
         cd = contactDetails.reduce((previous, current) => {
-          return Object.assign(current, previous);
+          return Object.assign(previous, current);
         }, cd);
 
         this.store.contactDetail(cd);

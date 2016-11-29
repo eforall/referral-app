@@ -10,7 +10,9 @@ export function contactDetailsReducer(state = INITIAL_STATE, action: ACTIONS.Con
         case ACTIONS.TYPES.SET_CONTACT_DETAIL: {
             let newState: ContactDetails = {};
             newState[action.payload.cid] = action.payload;
-            return Object.assign({}, state, newState);
+            let x = Object.assign({}, state, newState);
+            console.log(state, x);
+            return x;
         }
 
         default: {

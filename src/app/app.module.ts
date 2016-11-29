@@ -50,6 +50,7 @@ import * as FIREBASE from './firebase';
     FIREBASE.DataWriterService,
     ROUTING.ConfiguredUserGuard,
     ROUTING.AdminUserGuard,
+    ROUTING.ContactDetailResolver,
   ],
   bootstrap: [
     COMPONENTS.AppComponent

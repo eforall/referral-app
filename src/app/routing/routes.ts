@@ -1,7 +1,11 @@
 import { Routes } from '@angular/router';
 import { ConfiguredUserGuard } from './configured-user.guard';
 import { AdminUserGuard } from './admin-user.guard';
+import { ContactDetailResolver } from './contact-detail.resolver';
 import * as COMPONENTS from '../components';
+
+import { DataReaderService } from '../firebase/data-reader.service';
+import { StoreService } from '../store/store.service';
 
 export const routes: Routes = [
   {
@@ -44,6 +48,9 @@ export const routes: Routes = [
           {
             path: ':cid',
             component: COMPONENTS.EditContactComponent,
+            resolve: {
+              contactDetail: ContactDetailResolver
+            }
           },
         ]
       },
