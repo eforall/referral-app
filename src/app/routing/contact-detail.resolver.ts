@@ -35,7 +35,7 @@ export class ContactDetailResolver implements Resolve<ContactDetail> {
          */
         return new Observable<ContactDetail>((observer) => {
             let x$ = x.subscribe(contactDetail => {
-                x$.unsubscribe();
+                //x$.unsubscribe();
                 observer.next(contactDetail);
                 observer.complete();                
             });

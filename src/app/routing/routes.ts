@@ -47,10 +47,20 @@ export const routes: Routes = [
           },
           {
             path: ':cid',
-            component: COMPONENTS.EditContactComponent,
+            component: COMPONENTS.ContactComponent,
             resolve: {
               contactDetail: ContactDetailResolver
-            }
+            },
+            children: [
+              {
+                path: '',
+                component: COMPONENTS.EditContactComponent,
+              },
+              {
+                path: 'referrals',
+                component: COMPONENTS.ContactReferralsComponent,
+              }
+            ]
           },
         ]
       },

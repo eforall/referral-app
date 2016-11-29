@@ -12,4 +12,6 @@ export { EditReferralComponent } from './referrals/edit/edit-referral.component'
 
 export { CreateContactComponent } from './contacts/create/create-contact.component';
 export { FindContactsComponent } from './contacts/find/find-contacts.component';
-export { EditContactComponent } from './contacts/edit/edit-contact.component';
+export { ContactComponent } from './contacts/contact/contact.component';
+export { EditContactComponent } from './contacts/contact/edit/edit-contact.component';
+export { ContactReferralsComponent } from './contacts/contact/referrals/contact-referrals.component';
