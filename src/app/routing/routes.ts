@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ConfiguredUserGuard } from './configured-user.guard';
 import { AdminUserGuard } from './admin-user.guard';
 import { ContactDetailResolver } from './contact-detail.resolver';
+import { ReferralDetailResolver } from './referral-detail.resolver';
 import * as COMPONENTS from '../components';
 
 import { DataReaderService } from '../firebase/data-reader.service';
@@ -30,6 +31,9 @@ export const routes: Routes = [
           {
             path: ':rid',
             component: COMPONENTS.EditReferralComponent,
+            resolve: {
+              referralDetail: ReferralDetailResolver
+            },
           },
         ]
       },

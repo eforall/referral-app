@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { Partner } from './partner';
 import { Member } from './member';
 import { Contact, ContactDetail } from './contact';
+import { Referral, ReferralDetail } from './referral';
 import { StoreService } from '../store/store.service';
 
 
@@ -23,6 +24,7 @@ export class DataReaderService {
 
   private partners: Observable<Partner[]>;
   private contactDetails: any = {};
+  private referralDetails: any = {};
 
   constructor(private af: AngularFire,
               private store: StoreService) {
@@ -146,5 +148,37 @@ export class DataReaderService {
       });
 
     referrals.subscribe(referrals => this.store.loadReferrals(referrals));
+  }
+
+  loadReferralDetail(rid: string) {
+    if (this.referralDetails[rid] === undefined) {
+      this.referralDetails[rid] = this.af.database.list("/referral-details/" + rid).subscribe((referralDetails: ReferralDetail[]) => {
+
+        let rd: ReferralDetail = {
+          rid,
+          timestamp: 0,
+          cid: "",
+          from_pid: "",
+          to_pid: "",
+          status: "",
+          from_uid: "",
+          from_notes: "",
+          to_uid: "",
+          to_notes: "",
+          jobs_created: "",
+          jobs_preserved: "",
+          financing_received: "",
+        };
+        
+        //
+        // Merge the individual audit records into one current set of details
+        //
+        rd = referralDetails.reduce((previous, current) => {
+          return Object.assign(previous, current);
+        }, rd);
+
+        this.store.referralDetail(rd);
+      });
+    }
   }
 }

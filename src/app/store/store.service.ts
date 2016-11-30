@@ -30,4 +30,7 @@ export class StoreService {
   loadReferrals(referrals: FIREBASE.Referral[]) {
       this.store.dispatch(new ACTIONS.LoadReferralsAction(referrals));
   }
+  referralDetail(referralDetail: FIREBASE.ReferralDetail) {
+      this.store.dispatch(new ACTIONS.SetReferralDetailAction(referralDetail));
+  }
 }

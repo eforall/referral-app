@@ -53,6 +53,7 @@ import * as FIREBASE from './firebase';
     ROUTING.ConfiguredUserGuard,
     ROUTING.AdminUserGuard,
     ROUTING.ContactDetailResolver,
+    ROUTING.ReferralDetailResolver,
   ],
   bootstrap: [
     COMPONENTS.AppComponent
