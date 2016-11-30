@@ -38,6 +38,7 @@ export class DataReaderService {
     this.loadPartners();
     this.loadMembers();
     this.loadContacts();
+    this.loadReferrals();
   }
 
   private loadPartners() {
@@ -129,5 +130,21 @@ export class DataReaderService {
         this.store.contactDetail(cd);
       });
     }
+  }
+
+  private loadReferrals() {
+    let referrals = this.af.database.list("/referrals",  { query: { orderByChild: 'timestamp' } })
+      .map((referrals: any[]) => {
+        return referrals.reduce((list, r) => { return [...list, { 
+          rid: r.$key,
+          cid: r.cid,
+          from_pid:
+          r.from_pid,
+          to_pid: r.to_pid,
+          status: r.status,
+        }]; }, []);
+      });
+
+    referrals.subscribe(referrals => this.store.loadReferrals(referrals));
   }
 }

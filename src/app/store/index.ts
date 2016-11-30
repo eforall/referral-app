@@ -27,6 +27,8 @@ import { partnersReducer } from './reducers/partners.reducer';
 import { membersReducer } from './reducers/members.reducer';
 import { contactsReducer } from './reducers/contacts.reducer';
 import { contactDetailsReducer } from './reducers/contact-details.reducer';
+import { referralsReducer } from './reducers/referrals.reducer';
+import { referralDetailsReducer } from './reducers/referral-details.reducer';
 
 const reducers = {
   user: userReducer,
@@ -34,6 +36,8 @@ const reducers = {
   members: membersReducer,
   contacts: contactsReducer,
   contactDetails: contactDetailsReducer,
+  referrals: referralsReducer,
+  referralDetails: referralDetailsReducer,
 }
 
 

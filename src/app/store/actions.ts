@@ -1,6 +1,14 @@
 import { Action } from '@ngrx/store';
 import { actionType } from '../utils';
-import { User, Partner, Member, Contact, ContactDetail } from './state';
+import {
+    User,
+    Partner,
+    Member,
+    Contact,
+    ContactDetail,
+    Referral,
+    ReferralDetail,
+ } from './state';
 
 export const TYPES = {
     SET_USER: actionType('SetUser'),
@@ -8,6 +16,8 @@ export const TYPES = {
     LOAD_MEMBERS: actionType('LoadMembers'),
     LOAD_CONTACTS: actionType('LoadContacts'),
     SET_CONTACT_DETAIL: actionType('SetContactDetail'),
+    LOAD_REFERRALS: actionType('LoadReferrals'),
+    SET_REFERRAL_DETAIL: actionType('SetReferralDetail'),
 }
 
 
@@ -36,6 +46,16 @@ export class SetContactDetailAction implements Action {
     constructor(public payload: ContactDetail) {}
 }
 
+export class LoadReferralsAction implements Action {
+    type = TYPES.LOAD_REFERRALS;
+    constructor(public payload: Referral[]) {}
+}
+
+export class SetReferralDetailAction implements Action {
+    type = TYPES.SET_REFERRAL_DETAIL;
+    constructor(public payload: ReferralDetail) {}
+}
+
 
 export type PartnersAction
     = LoadPartnersAction
@@ -51,6 +71,13 @@ export type ContactsAction
 
 export type ContactDetailsAction
     = SetContactDetailAction
+
+export type ReferralsAction
+    = LoadReferralsAction
+    | SetUserAction;
+
+export type ReferralDetailsAction
+    = SetReferralDetailAction
 
 export type UserAction
     = SetUserAction;

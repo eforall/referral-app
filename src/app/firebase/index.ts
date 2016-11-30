@@ -2,6 +2,7 @@ export { User } from './user';
 export { Partner } from './partner';
 export { Member } from './member';
 export { Contact, ContactDetail, ContactDetails } from './contact';
+export { Referral, ReferralDetail, ReferralDetails } from './referral';
 
 export { firebaseConfig } from './firebase-config'
 export { authConfig } from './auth-config'

@@ -27,5 +27,7 @@ export class StoreService {
   contactDetail(contactDetail: FIREBASE.ContactDetail) {
       this.store.dispatch(new ACTIONS.SetContactDetailAction(contactDetail));
   }
-
+  loadReferrals(referrals: FIREBASE.Referral[]) {
+      this.store.dispatch(new ACTIONS.LoadReferralsAction(referrals));
+  }
 }

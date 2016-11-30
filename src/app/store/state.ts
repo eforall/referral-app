@@ -1,5 +1,14 @@
-import { User, Partner, Member, Contact, ContactDetail, ContactDetails } from '../firebase';
-export { User, Partner, Member, Contact, ContactDetail, ContactDetails } from '../firebase';
+import {
+    User, Partner, Member,
+    Contact, ContactDetail, ContactDetails,
+    Referral, ReferralDetail, ReferralDetails,
+ } from '../firebase';
+
+export {
+    User, Partner, Member,
+    Contact, ContactDetail, ContactDetails,
+    Referral, ReferralDetail, ReferralDetails,
+ } from '../firebase';
 
 export interface AppState {
     user: User;
@@ -7,4 +16,6 @@ export interface AppState {
     members: Member[],
     contacts: Contact[],
     contactDetails: ContactDetails,
+    referrals: Referral[],
+    referralDetails: ReferralDetails,
 }
