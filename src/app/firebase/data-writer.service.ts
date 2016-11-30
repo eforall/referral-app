@@ -18,11 +18,19 @@ const TIMESTAMP = {".sv":"timestamp"};
 export class DataWriterService {
 
   partners: FirebaseListObservable<any>;
+
+  //
+  // Cached copies of the user id and partner id of the currently logged in user
+  //
   uid: string;
+  pid: string;
 
   constructor(private af: AngularFire, private store: StoreService) {
     this.partners = this.af.database.list("/partners");
-    store.select(store => store.user).subscribe(user => this.uid = user? user.uid : undefined);
+    store.select(store => store.user).subscribe(user => {
+      this.uid = user? user.uid : undefined;
+      this.pid = user? user.pid : undefined;
+    });
   }
 
   addPartner(name: string) {

@@ -21,11 +21,11 @@ export class EditContactComponent implements OnInit, OnDestroy {
   contactDetail$: Subscription;
   form: FormGroup;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
               private fb: FormBuilder,
               private data: DataWriterService,
-              private store: StoreService,
-              private router: Router) {
+              private store: StoreService) {
 
     this.form = fb.group({
       name: ['', Validators.required],

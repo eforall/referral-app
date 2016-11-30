@@ -1,1 +1,6 @@
-Referrals go here..
+
+
+<h3>Create Referral To:</h3>
+
+<partner-select [partners]="partners | async" [currentId]="" (newValue)="referredPartner($event)"></partner-select>
+<button md-raised-button color="primary" [disabled]="!canCreateReferral()" (click)="createReferral()">Create</button>

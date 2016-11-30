@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StoreService } from '../../../../store/store.service';
+import { DataWriterService } from '../../../../firebase/data-writer.service';
 
 @Component({
   selector: 'ra-contactreferrals',
@@ -8,9 +10,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContactReferralsComponent {
 
-  constructor(private route: ActivatedRoute) {
-    
+  partners;
+  referredPartnerId = "";
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private store: StoreService,
+              private data: DataWriterService) {
+
+    this.partners = store.select(store => store.partners);
   }
 
 
+  referredPartner(referredPartnerId) {
+    this.referredPartnerId = referredPartnerId;
+  }
+
+  canCreateReferral() {
+    return this.referredPartnerId !== "" && this.referredPartnerId !== this.data.pid;
+  }
+
+  createReferral() {
+    let cid = this.route.parent.snapshot.params["cid"];
+    console.log("Create a referral from " + this.data.pid + " to " + this.referredPartnerId + " for contact " + cid);
+  }
 }
