@@ -45,13 +45,15 @@ export class DataWriterService {
   addContact(name: string, business: string) {
     if (this.uid === undefined) return "";
 
-    let key = this.af.database.list("/contacts").push({name, business}).key;
-    this.af.database.list("/contact-details/" + key).push({
+    let contact = {
       uid: this.uid,
       timestamp: TIMESTAMP,
       name,
       business
-    });
+    };
+
+    let key = this.af.database.list("/contacts").push(contact).key;   //current state
+    this.af.database.list("/contact-details/" + key).push(contact);   //first audit record
 
     return key;
   }
@@ -75,7 +77,22 @@ export class DataWriterService {
       if (business !== undefined) contactEntry.business = business;
       this.af.database.object("/contacts/" + cid).update(contactEntry);
     }
-    
+  }
+
+  addReferral(cid: string, pid: string) {
+    let referral = {
+      uid: this.uid,        //current user
+      timestamp: TIMESTAMP,
+      cid,                  //contact being referred
+      from_pid: this.pid,   //partner of current user
+      to_pid: pid,          //partner being referred to
+      status: "open"
+    };
+
+    let key = this.af.database.list("/referrals").push(referral).key;   //current state
+    this.af.database.list("/referral-details/" + key).push(referral);   //first audit record
+
+    return key;
   }
 
 }
