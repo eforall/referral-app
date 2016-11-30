@@ -7,17 +7,17 @@ export interface Contact {
 export interface ContactDetail extends Contact {
     email: string,
     phone: string,
-    contactMethod: string,
+    contact_method: string,
     language: string,
     gender: string,
     race: string,
     website: string,
-    businessStatus: string,
+    business_status: string,
     address: string,
     immigrant: boolean,
-    nonNativeEnglish: boolean,
-    lowIncome: boolean,
-    wasUnemployed: boolean,
+    non_native_english: boolean,
+    low_income: boolean,
+    was_unemployed: boolean,
     veteran: boolean,
 }
 

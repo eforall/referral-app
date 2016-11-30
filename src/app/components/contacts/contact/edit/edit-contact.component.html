@@ -41,21 +41,19 @@
                 <option value="established">Established</option>
             </select>
 
-            Address:
-            <textarea formControlName="address"></textarea>
+            <label for="address" class="address">Address:</label>
             
-            <md-checkbox formControlName="immigrant">Immigrant</md-checkbox><br>
-            <md-checkbox formControlName="non_native_english">Non-Native English</md-checkbox><br>
-            <md-checkbox formControlName="low_income">Low Income</md-checkbox><br>
-            <md-checkbox formControlName="was_unemployed">Was Enumployed</md-checkbox><br>
+            <textarea id="address" formControlName="address"></textarea>
+            
+            <md-checkbox formControlName="immigrant">Immigrant</md-checkbox>
+            <md-checkbox formControlName="non_native_english">Non-Native English</md-checkbox>
+            <md-checkbox formControlName="low_income">Low Income</md-checkbox>
+            <md-checkbox formControlName="was_unemployed">Was Unemployed</md-checkbox>
             <md-checkbox formControlName="veteran">Veteran</md-checkbox>
         </div>    
     </div>
 
     <div class="buttons">
-        <button type="submit" md-raised-button color="primary" [disabled]="!form.valid">Create</button>
+        <button type="submit" md-raised-button color="primary" [disabled]="!form.valid || !form.dirty">Save</button>
     </div>
 </form>
-
-
-{{ contactDetail | json }}

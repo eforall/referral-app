@@ -8,22 +8,37 @@
     margin: 5px;
 }
 
-textarea, select, .md-text, .md-checkbox-layout {
+textarea, select, md-input, .md-text, md-checkbox {
     display: block;
     width: 100%;
+    margin: 36px 0 0 0;
 }
 
-textarea, select, span.md-checkbox-layout {
+textarea, select, span.md-checkbox-label {
     font-weight: 300;
     font-size: 16px;
-    margin: 16px 0;
 }
+
+md-checkbox {
+    margin: 10px 0 0 24px;
+}
+
 
 textarea {
     min-height: 60px;
+    margin-bottom: 20px;
+}
+
+label.address {
+    position: relative;
+    top: 30px;
 }
 
 select.unselected {
     color: #999;
 }
 
+div.buttons {
+    margin-top: 2rem;
+    text-align: right;
+}

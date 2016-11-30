@@ -48,4 +48,26 @@ export class DataWriterService {
     return key;
   }
 
+  editContact(cid: string, newDetail: any) {
+    //
+    // Add an audit entry
+    //
+    this.af.database.list("/contact-details/" + cid).push(
+      Object.assign({}, newDetail, { uid: this.uid, timestamp: TIMESTAMP})
+    );
+
+    //
+    // Update the index entry when the name and business changes
+    //
+    let name = newDetail["name"];
+    let business = newDetail["business"];
+    if (name !== undefined || business !== undefined) {
+      let contactEntry: any = {};
+      if (name !== undefined) contactEntry.name = name;
+      if (business !== undefined) contactEntry.business = business;
+      this.af.database.object("/contacts/" + cid).update(contactEntry);
+    }
+    
+  }
+
 }
