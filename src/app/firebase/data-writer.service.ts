@@ -81,12 +81,12 @@ export class DataWriterService {
 
   addReferral(cid: string, pid: string) {
     let referral = {
-      uid: this.uid,        //current user
-      timestamp: TIMESTAMP,
       cid,                  //contact being referred
+      from_uid: this.uid,   //current user
       from_pid: this.pid,   //partner of current user
       to_pid: pid,          //partner being referred to
-      status: "open"
+      status: "open",
+      timestamp: TIMESTAMP,
     };
 
     let key = this.af.database.list("/referrals").push(referral).key;   //current state

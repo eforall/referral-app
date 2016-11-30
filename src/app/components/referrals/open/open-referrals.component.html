@@ -13,7 +13,7 @@
     <div class="mt-row clickable" *ngFor="let referral of filteredReferrals()" routerLink="/referrals/{{referral.rid}}">
       <div class="mt-cell">{{contactsHash[referral.cid].name}}</div>
       <div class="mt-cell">{{contactsHash[referral.cid].business}}</div>
-      <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
+      <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
     </div>
   </div>
     
