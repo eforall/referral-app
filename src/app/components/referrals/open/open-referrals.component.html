@@ -11,9 +11,9 @@
     </div>
     
     <div class="mt-row clickable" *ngFor="let referral of referrals" routerLink="/referrals/{{referral.rid}}">
-      <div class="mt-cell">{{referral.cid}}</div>
-      <div class="mt-cell">{{referral.cid}}</div>
-      <div class="mt-cell">{{referral.to_pid}}</div>
+      <div class="mt-cell">{{contacts[referral.cid].name}}</div>
+      <div class="mt-cell">{{contacts[referral.cid].business}}</div>
+      <div class="mt-cell">{{partners[referral.to_pid].name}}</div>
     </div>
   </div>
     
