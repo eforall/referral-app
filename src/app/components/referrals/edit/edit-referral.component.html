@@ -1,20 +1,36 @@
   <md-sidenav-layout class="inner">
     <md-sidenav mode="over" #sidecontact>
+        <h3>{{contactDetail.name}}</h3>
+        <div *ngIf="contactDetail.phone">{{contactDetail.phone}}</div>
+        <div *ngIf="contactDetail.email">{{contactDetail.email}}</div>
+        <div *ngIf="contactDetail.contact_method">Contact via {{contactDetail.contact_method}}</div>
         <br>
-        Contact details go here...
+        <div *ngIf="contactDetail.language">Language: {{contactDetail.language}}</div>
+        <div *ngIf="contactDetail.gender">Gender: {{contactDetail.gender}}</div>
+        <div *ngIf="contactDetail.race">Race: {{contactDetail.race}}</div>
+        <br>
+        <div *ngIf="contactDetail.immigrant">▸ Immigrant</div>
+        <div *ngIf="contactDetail.non_native_english">▸ Non-native English</div>
+        <div *ngIf="contactDetail.low_income">▸ Low Income</div>
+        <div *ngIf="contactDetail.was_unemployed">▸ Was Unemployed</div>
+        <div *ngIf="contactDetail.veteran">▸ US Military Veteran</div>
+        <br>
+        <div *ngIf="contactDetail.address"><br>{{contactDetail.address}}</div>
+        <br>
+        <h3>{{contactDetail.business}}</h3>
+        <div *ngIf="contactDetail.business_status">Status: {{contactDetail.business_status}}</div>
+        <div *ngIf="contactDetail.website">{{contactDetail.website}}</div>
+        <br>
     </md-sidenav>
     <button class="contact_button" md-fab color="primary" (click)="sidecontact.toggle()">
         <md-icon>contact_phone</md-icon>
     </button>
     <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h1>From {{ referralDetail.from_pid }} for</h1>
+        <h1>From <b>{{ fromPartner?.name }}</b></h1>
 
 
-        <label>Date:</label>
-        <span>Date here</span>
-
-        <label>Member:</label>
-        <span>Member here</span>
+        <label>Created:</label>
+        <span>{{createdDate}} by {{fromMemberName}}</span>
 
         <label for="from_notes">Notes:</label>
         <textarea id="from_notes" formControlName="from_notes"></textarea>
@@ -23,7 +39,7 @@
             <button type="submit" md-raised-button color="primary" [disabled]="!form.valid || !form.dirty">Save</button>
         </div>
 
-        <h1>To {{ referralDetail.to_pid }}</h1>
+        <h1>To <b>{{ toPartner?.name }}</b></h1>
 
         <label for="status">Status:</label>
         <select id="status" formControlName="status">
@@ -31,10 +47,10 @@
             <option value="closed">Closed</option>
         </select>
 
-        <label for="to_uid">Member:</label>
+        <label for="to_uid">Assigned To:</label>
         <select id="to_uid" formControlName="to_uid">
-            <option value="open">Open</option>
-            <option value="closed">Closed</option>
+            <option value=""></option>
+            <option *ngFor="let member of toMembers" value="{{member.pid}}">{{member.displayName}} ({{member.email}})</option>
         </select>
 
         <label for="to_notes">Notes:</label>
