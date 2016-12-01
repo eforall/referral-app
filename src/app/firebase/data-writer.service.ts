@@ -108,8 +108,7 @@ export class DataWriterService {
     //
     let status = newDetail["status"];
     if (status !== undefined) {
-      let entry: any = {};
-      if (status !== undefined) entry.name = name;
+      let entry: any = { status };
       this.af.database.object("/referrals/" + rid).update(entry);
     }
   }

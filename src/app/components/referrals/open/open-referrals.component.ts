@@ -53,6 +53,6 @@ export class ShowOpenReferralsComponent {
   }
 
   filteredReferrals() {
-    return this.referrals.filter(referral => referral.to_pid == this.to_pid);
+    return this.referrals.filter(referral => referral.to_pid == this.to_pid && referral.status == 'open');
   }
 }
