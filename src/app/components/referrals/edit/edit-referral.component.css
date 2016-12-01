@@ -1,6 +1,8 @@
 textarea, select, md-input, .md-text, md-checkbox, span {
     display: inline-block;
     width: calc(100% - 9rem);
+    min-width: calc(100% - 9rem);
+    max-width: calc(100% - 9rem);
     margin: 0 0 12px 0;
     box-sizing: border-box;
 }
