@@ -27,3 +27,8 @@ div.buttons {
     margin: 0.5rem 0;
     text-align: right;
 }
+
+.contact_button {
+    position: absolute;
+    right: 0;
+}

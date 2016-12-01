@@ -51,9 +51,12 @@ md-toolbar md-toolbar-row > span {
 }
 
 md-sidenav-layout {
+  background-color: #FFF !important;
+  overflow-y: auto !important;
+}
+md-sidenav-layout:not(.inner) {
   flex-grow: 1;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  background-color: #FFF !important;
   overflow-y: auto !important;
 }
 
@@ -86,7 +89,7 @@ md-sidenav {
   box-shadow: 1px 0 4px rgba(0,0,0,0.5);
 }
 
-.md-sidenav-content {
+md-sidenav-layout:not(.inner) > div.md-sidenav-content {
   padding: 20px;
   overflow: initial;
 }
