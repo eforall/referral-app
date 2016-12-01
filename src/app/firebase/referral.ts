@@ -12,6 +12,8 @@ export interface ReferralDetail extends Referral {
     from_notes: string,
     to_uid: string,
     to_notes: string,
+    five_hours: boolean,
+    result: string,
     jobs_created: string,
     jobs_preserved: string,
     financing_received: string,

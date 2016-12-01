@@ -164,6 +164,8 @@ export class DataReaderService {
           to_pid: "",
           to_uid: "",
           to_notes: "",
+          five_hours: false,
+          result: "",
           status: "",
           jobs_created: "",
           jobs_preserved: "",

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/rx';
+import { Subscription } from 'rxjs/subscription';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataWriterService, ReferralDetail } from '../../../firebase';
 import { StoreService } from '../../../store';
@@ -11,14 +12,37 @@ import { StoreService } from '../../../store';
 })
 export class EditReferralComponent {
 
+  //timestamp
+  //contactDetail
+  //from user
+  //from partner
+  //to partner
+  controlNames = ['from_notes', 'status', 'to_uid', 'to_notes', 'five_hours',
+    'result', 'jobs_created', 'jobs_preserved', 'financing_received' ];
+
   referralDetail: ReferralDetail;
   referralDetail$: Subscription;
+  form: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private fb: FormBuilder,
+              private data: DataWriterService,
               private store: StoreService) {
 
-    let rid = route.snapshot.params["rid"];
+    this.form = fb.group({
+      from_notes: '',
+      status: '',
+      to_uid: '',
+      to_notes: '',
+      five_hours: false,
+      result: '',
+      jobs_created: '',
+      jobs_preserved: '',
+      financing_received: '',
+    });
+
+
 
   }
 
@@ -37,14 +61,14 @@ export class EditReferralComponent {
   }
 
   patchValues(referralDetail: ReferralDetail) {
-    /*
+    
     this.controlNames.forEach(controlName => {
       let control: AbstractControl = this.form.controls[controlName];
       if (!control.dirty) {
-        control.patchValue(contactDetail[controlName]);
+        control.patchValue(referralDetail[controlName]);
       } 
     });
-    */
+    
     this.referralDetail = referralDetail;
     
   }

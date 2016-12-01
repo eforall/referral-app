@@ -1,3 +1,58 @@
-<h1>Referral</h1>
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>From {{ referralDetail.from_pid }} for <button md-raised-button color="primary">{{referralDetail.cid}}</button></h1>
 
-{{ referralDetail | json }}
+    <label>Date:</label>
+    <span>Date here</span>
+
+    <label>Member:</label>
+    <span>Member here</span>
+
+    <label for="from_notes">Notes:</label>
+    <textarea id="from_notes" formControlName="from_notes"></textarea>
+
+    <div class="buttons">
+        <button type="submit" md-raised-button color="primary" [disabled]="!form.valid || !form.dirty">Save</button>
+    </div>
+
+    <h1>To {{ referralDetail.to_pid }}</h1>
+
+    <label for="status">Status:</label>
+    <select id="status" formControlName="status">
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+    </select>
+
+    <label for="to_uid">Member:</label>
+    <select id="to_uid" formControlName="to_uid">
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+    </select>
+
+    <label for="to_notes">Notes:</label>
+    <textarea id="to_notes" formControlName="to_notes"></textarea>
+
+    <h5>Outcomes</h5>
+
+    <label for="result">Result:</label>
+    <select id="result" formControlName="result">
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+    </select>
+
+    <label for="jobs_created"></label>
+    <md-input id="jobs_created" formControlName="jobs_created" placeholder="Jobs Created"></md-input>
+
+    <label for="jobs_preserved"></label>
+    <md-input id="jobs_preserved" formControlName="jobs_preserved" placeholder="Jobs Preserved"></md-input>
+
+    <label for="financing_received"></label>
+    <md-input id="financing_received" formControlName="financing_received" placeholder="Financing Received"></md-input>
+
+    <label></label>
+    <md-checkbox formControlName="five_hours">Business received at least five hours of service</md-checkbox>
+
+    <div class="buttons">
+        <button type="submit" md-raised-button color="primary" [disabled]="!form.valid || !form.dirty">Save</button>
+    </div>
+
+</form>
