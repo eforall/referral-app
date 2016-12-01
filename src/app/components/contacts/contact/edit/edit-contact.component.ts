@@ -90,7 +90,7 @@ export class EditContactComponent implements OnInit, OnDestroy {
 
       if (value !== this.contactDetail[controlName]) {
         somethingChanged = true;
-        newDetail[controlName] = control.value;
+        newDetail[controlName] = value;
       }
     });
 

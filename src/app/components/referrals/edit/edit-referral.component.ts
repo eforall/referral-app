@@ -12,11 +12,6 @@ import { StoreService } from '../../../store';
 })
 export class EditReferralComponent {
 
-  //timestamp
-  //contactDetail
-  //from user
-  //from partner
-  //to partner
   controlNames = ['from_notes', 'status', 'to_uid', 'to_notes', 'five_hours',
     'result', 'jobs_created', 'jobs_preserved', 'financing_received' ];
 
@@ -117,4 +112,27 @@ export class EditReferralComponent {
     if (this.contactDetail$) this.contactDetail$.unsubscribe();
   }
 
+  onSubmit() {
+    if (this.form.invalid) return;
+    if (!this.form.dirty) return;
+
+    let newDetail = {};
+    let somethingChanged = false;
+
+    this.controlNames.forEach(controlName => {
+      let control: AbstractControl = this.form.controls[controlName];
+      let value = control.value;
+      if (typeof(value) == "string") value = value.trim();
+
+      if (value !== this.referralDetail[controlName]) {
+        somethingChanged = true;
+        newDetail[controlName] = value;
+      }
+    });
+
+      this.referralDetail = Object.assign({}, this.referralDetail, newDetail);
+      this.form.reset(this.referralDetail);
+
+      this.writer.editReferral(this.referralDetail.rid, newDetail);
+  }
 }

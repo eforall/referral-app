@@ -72,10 +72,10 @@ export class DataWriterService {
     let name = newDetail["name"];
     let business = newDetail["business"];
     if (name !== undefined || business !== undefined) {
-      let contactEntry: any = {};
-      if (name !== undefined) contactEntry.name = name;
-      if (business !== undefined) contactEntry.business = business;
-      this.af.database.object("/contacts/" + cid).update(contactEntry);
+      let entry: any = {};
+      if (name !== undefined) entry.name = name;
+      if (business !== undefined) entry.business = business;
+      this.af.database.object("/contacts/" + cid).update(entry);
     }
   }
 
@@ -93,6 +93,25 @@ export class DataWriterService {
     this.af.database.list("/referral-details/" + key).push(referral);   //first audit record
 
     return key;
+  }
+
+  editReferral(rid: string, newDetail: any) {
+    //
+    // Add an audit entry
+    //
+    this.af.database.list("/referral-details/" + rid).push(
+      Object.assign({}, newDetail, { uid: this.uid, timestamp: TIMESTAMP})
+    );
+
+    //
+    // Update the index entry when the status changes
+    //
+    let status = newDetail["status"];
+    if (status !== undefined) {
+      let entry: any = {};
+      if (status !== undefined) entry.name = name;
+      this.af.database.object("/referrals/" + rid).update(entry);
+    }
   }
 
 }

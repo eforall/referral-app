@@ -1,9 +1,9 @@
   <md-sidenav-layout class="inner">
     <md-sidenav mode="over" #sidecontact>
         <h3>{{contactDetail.name}}</h3>
+        <div *ngIf="contactDetail.contact_method">Contact via {{contactDetail.contact_method}}</div>
         <div *ngIf="contactDetail.phone">{{contactDetail.phone}}</div>
         <div *ngIf="contactDetail.email">{{contactDetail.email}}</div>
-        <div *ngIf="contactDetail.contact_method">Contact via {{contactDetail.contact_method}}</div>
         <br>
         <div *ngIf="contactDetail.language">Language: {{contactDetail.language}}</div>
         <div *ngIf="contactDetail.gender">Gender: {{contactDetail.gender}}</div>
@@ -50,7 +50,7 @@
         <label for="to_uid">Assigned To:</label>
         <select id="to_uid" formControlName="to_uid">
             <option value=""></option>
-            <option *ngFor="let member of toMembers" value="{{member.pid}}">{{member.displayName}} ({{member.email}})</option>
+            <option *ngFor="let member of toMembers" value="{{member.uid}}">{{member.displayName}} ({{member.email}})</option>
         </select>
 
         <label for="to_notes">Notes:</label>
@@ -60,8 +60,11 @@
 
         <label for="result">Result:</label>
         <select id="result" formControlName="result">
-            <option value="open">Open</option>
-            <option value="closed">Closed</option>
+            <option value=""></option>
+            <option value="new">New Business Established</option>
+            <option value="stabilized">Business Stabilized</option>
+            <option value="growth">Business Growth / Increased Revenue</option>
+            <option value="none">None</option>
         </select>
 
         <label for="jobs_created"></label>
