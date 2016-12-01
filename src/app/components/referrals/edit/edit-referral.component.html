@@ -21,6 +21,8 @@
         <div *ngIf="contactDetail.business_status">Status: {{contactDetail.business_status}}</div>
         <div *ngIf="contactDetail.website">{{contactDetail.website}}</div>
         <br>
+        <br>
+        <button md-raised-button color="primary" routerLink="/contacts/{{contactDetail.cid}}">Edit</button>
     </md-sidenav>
     <button class="contact_button" md-fab color="primary" (click)="sidecontact.toggle()">
         <md-icon>contact_phone</md-icon>
