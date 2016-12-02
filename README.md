@@ -40,10 +40,14 @@ This is the front-end source code for the [Lawrence Partnership](http://lawrence
 * Domain: referrals.lawrencepartnership.org
  * Configure server and DNS to use a more memorable URL instead of the default Firebase one
 * Improved database security
+* Contacts
+ * When creating a new contact, show existing ones that might be the same to avoid duplicates
+ * When finding use a search box instead of a simple list
 * Referrals
  * Show all open referrals on the "open" screen, grouped by partner, instead of using a dropdown list
  * Disable "from notes" field unless logged in user is a member of the "from" partner
  * Disable all "to" fields unless logged in user is a member of the "to" partner
+ * Validate jobs created, jobs perserved, and financing received fields are numeric
 * Reporting
  * Overall usage
  * Per partner
