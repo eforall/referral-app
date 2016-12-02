@@ -65,4 +65,8 @@ export class ContactReferralsComponent {
     this.router.navigate(["/referrals/" + rid]);
   }
 
+  renderDaysOld(date: number) {
+    var one_day=1000 * 60 * 60 * 24;   //One day in milliseconds
+    return Math.round((Date.now() - date) / one_day);
+  }
 }

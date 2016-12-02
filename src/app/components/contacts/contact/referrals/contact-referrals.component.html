@@ -4,12 +4,12 @@
     <div class="mt-row header">
       <div class="mt-cell">From</div>
       <div class="mt-cell">To</div>
-      <div class="mt-cell">Date</div>
+      <div class="mt-cell">Age</div>
     </div>
     <div class="mt-row clickable" *ngFor="let referral of openReferrals | async" routerLink="/referrals/{{referral.rid}}">
       <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
       <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
-      <div class="mt-cell">{{referral | json}}</div>
+      <div class="mt-cell">{{renderDaysOld(referral.timestamp)}} days</div>
     </div>
   </div>
 </div>
@@ -20,12 +20,12 @@
     <div class="mt-row header">
       <div class="mt-cell">From</div>
       <div class="mt-cell">To</div>
-      <div class="mt-cell">Date</div>
+      <div class="mt-cell">Age</div>
     </div>
     <div class="mt-row clickable" *ngFor="let referral of closedReferrals | async" routerLink="/referrals/{{referral.rid}}">
       <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
       <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
-      <div class="mt-cell">{{referral | json}}</div>
+      <div class="mt-cell">{{renderDaysOld(referral.timestamp)}} days</div>
     </div>
   </div>
 </div>

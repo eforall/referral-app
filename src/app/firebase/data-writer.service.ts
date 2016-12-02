@@ -90,7 +90,6 @@ export class DataWriterService {
     };
 
     let rid = this.af.database.list("/referrals").push(referral).key;   //current state
-    referral["created"] = TIMESTAMP;
     this.af.database.list("/referral-details/" + rid).push(referral);   //first audit record
 
     return rid;

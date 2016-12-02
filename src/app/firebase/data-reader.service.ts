@@ -144,6 +144,7 @@ export class DataReaderService {
           r.from_pid,
           to_pid: r.to_pid,
           status: r.status,
+          timestamp: r.timestamp,
         }]; }, []);
       });
 
