@@ -39,6 +39,7 @@ This is the front-end source code for the [Lawrence Partnership](http://lawrence
  * Email all partner members when they get a new referral
 * Domain: referrals.lawrencepartnership.org
  * Configure server and DNS to use a more memorable URL instead of the default Firebase one
+* Automated backups
 * Improved database security
 * Contacts
  * When creating a new contact, show existing ones that might be the same to avoid duplicates
