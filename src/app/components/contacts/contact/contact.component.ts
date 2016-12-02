@@ -19,7 +19,6 @@ export class ContactComponent {
   constructor(private router: Router, private route: ActivatedRoute) {
 
     let cid = route.snapshot.params["cid"];
-    console.log("CID!!", cid);
     this.tabLinks[0].link = '/contacts/' + cid;
     this.tabLinks[1].link = '/contacts/' + cid + '/referrals';
 

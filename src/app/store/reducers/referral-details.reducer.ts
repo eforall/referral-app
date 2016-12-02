@@ -11,7 +11,6 @@ export function referralDetailsReducer(state = INITIAL_STATE, action: ACTIONS.Re
             let newState: ReferralDetails = {};
             newState[action.payload.rid] = action.payload;
             let x = Object.assign({}, state, newState);
-            console.log(state, x);
             return x;
         }
 

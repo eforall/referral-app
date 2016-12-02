@@ -36,7 +36,6 @@ export class AuthService {
           if (value == undefined) return Observable.of(undefined);
           return af.database.object('/access/' + value.uid)
                     .map((o) => {
-                      console.log('/access/' + value.uid, o);
                       return Object.assign({}, value, {pid: o.pid, admin: !!o.admin});
                     })
         });

@@ -17,7 +17,6 @@ export class PartnerUserOnlyDirective implements AfterViewInit, OnDestroy {
 
 
     ngAfterViewInit() {
-        console.log("PartnerUserOnlyDirective.ngAfterViewInit");
 
         this.renderer.setElementAttribute(this.el.nativeElement, "disabled", "disabled");
 
@@ -28,7 +27,6 @@ export class PartnerUserOnlyDirective implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log("PartnerUserOnlyDirective.ngOnDestroy");
         this.user$.unsubscribe();
     }
 

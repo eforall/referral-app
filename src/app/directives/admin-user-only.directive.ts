@@ -17,7 +17,6 @@ export class AdminUserOnlyDirective implements AfterViewInit, OnDestroy {
 
 
     ngAfterViewInit() {
-        console.log("AdminUserOnlyDirective.ngAfterViewInit");
 
         this.renderer.setElementAttribute(this.el.nativeElement, "disabled", "disabled");
 
@@ -28,7 +27,6 @@ export class AdminUserOnlyDirective implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log("AdminUserOnlyDirective.ngOnDestroy");
         this.user$.unsubscribe();
     }
 

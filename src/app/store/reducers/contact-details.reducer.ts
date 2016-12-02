@@ -11,7 +11,6 @@ export function contactDetailsReducer(state = INITIAL_STATE, action: ACTIONS.Con
             let newState: ContactDetails = {};
             newState[action.payload.cid] = action.payload;
             let x = Object.assign({}, state, newState);
-            console.log(state, x);
             return x;
         }
 
