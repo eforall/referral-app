@@ -55,3 +55,5 @@ This is the front-end source code for the [Lawrence Partnership](http://lawrence
 * Logged-in menu
  * Show Profile image of currently logged in user
  * Show partner name and email of currently logged in user
+* Update Select and TextArea form fields to use the new Material Design look
+ * Requires an updated version of [material2](https://github.com/angular/material2/blob/master/README.md)
