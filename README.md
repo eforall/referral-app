@@ -7,7 +7,7 @@ This is the front-end source code for the [Lawrence Partnership](http://lawrence
 
 * Supports unlimited named partners
 * Supports unlimited users, each can be tagged as a member of a partner
-** Users that are not members of a partner are restricted access and see a message how to request access
+ * Users that are not members of a partner are restricted access and see a message how to request access
 
 
 
