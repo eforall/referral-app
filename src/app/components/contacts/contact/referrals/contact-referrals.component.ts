@@ -61,7 +61,8 @@ export class ContactReferralsComponent {
 
   createReferral() {
     let cid = this.route.parent.snapshot.params["cid"];
-    this.data.addReferral(cid, this.referredPartnerId);
+    let rid = this.data.addReferral(cid, this.referredPartnerId);
+    this.router.navigate(["/referrals/" + rid]);
   }
 
 }

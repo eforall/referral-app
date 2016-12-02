@@ -52,10 +52,10 @@ export class DataWriterService {
       business
     };
 
-    let key = this.af.database.list("/contacts").push(contact).key;   //current state
-    this.af.database.list("/contact-details/" + key).push(contact);   //first audit record
+    let cid = this.af.database.list("/contacts").push(contact).key;   //current state
+    this.af.database.list("/contact-details/" + cid).push(contact);   //first audit record
 
-    return key;
+    return cid;
   }
 
   editContact(cid: string, newDetail: any) {
@@ -89,10 +89,11 @@ export class DataWriterService {
       timestamp: TIMESTAMP,
     };
 
-    let key = this.af.database.list("/referrals").push(referral).key;   //current state
-    this.af.database.list("/referral-details/" + key).push(referral);   //first audit record
+    let rid = this.af.database.list("/referrals").push(referral).key;   //current state
+    referral["created"] = TIMESTAMP;
+    this.af.database.list("/referral-details/" + rid).push(referral);   //first audit record
 
-    return key;
+    return rid;
   }
 
   editReferral(rid: string, newDetail: any) {

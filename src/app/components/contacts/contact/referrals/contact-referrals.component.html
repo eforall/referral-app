@@ -9,7 +9,7 @@
     <div class="mt-row clickable" *ngFor="let referral of openReferrals | async" routerLink="/referrals/{{referral.rid}}">
       <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
       <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
-      <div class="mt-cell">{{referral.timestamp}}</div>
+      <div class="mt-cell">{{referral | json}}</div>
     </div>
   </div>
 </div>
@@ -25,7 +25,7 @@
     <div class="mt-row clickable" *ngFor="let referral of closedReferrals | async" routerLink="/referrals/{{referral.rid}}">
       <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
       <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
-      <div class="mt-cell">{{referral.timestamp}}</div>
+      <div class="mt-cell">{{referral | json}}</div>
     </div>
   </div>
 </div>
