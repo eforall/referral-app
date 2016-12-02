@@ -32,3 +32,26 @@ This is the front-end source code for the [Lawrence Partnership](http://lawrence
 * Contact and Referral changes are stored in an audit trail for tracking changes by user
  
 
+## Possible Improvements
+
+* Emails
+ * Auto-send email to request access
+ * Email all partner members when they get a new referral
+* Domain: referrals.lawrencepartnership.org
+ * Configure server and DNS to use a more memorable URL instead of the default Firebase one
+* Improved database security
+* Referrals
+ * Show all open referrals on the "open" screen, grouped by partner, instead of using a dropdown list
+ * Disable "from notes" field unless logged in user is a member of the "from" partner
+ * Disable all "to" fields unless logged in user is a member of the "to" partner
+* Reporting
+ * Overall usage
+ * Per partner
+* Partner Administration
+ * Rename and delete existing partners
+ * Show number of referrals (open and closed) per partner
+* Member Administration
+ * Remove non-member partners
+* Logged-in menu
+ * Show Profile image of currently logged in user
+ * Show partner name and email of currently logged in user
