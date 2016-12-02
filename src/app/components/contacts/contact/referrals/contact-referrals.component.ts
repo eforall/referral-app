@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription, Observable } from 'rxjs/rx';
 import { StoreService } from '../../../../store/store.service';
-import { DataWriterService } from '../../../../firebase/data-writer.service';
+import { Referral, Partner, DataWriterService } from '../../../../firebase';
 
 @Component({
   selector: 'ra-contactreferrals',
@@ -10,7 +11,11 @@ import { DataWriterService } from '../../../../firebase/data-writer.service';
 })
 export class ContactReferralsComponent {
 
+  partners$: Subscription;
   partners;
+  openReferrals: Observable<Referral[]>;
+  closedReferrals: Observable<Referral[]>;
+  partnersHash: {[pid: string]: Partner} = {};
   referredPartnerId = "";
 
   constructor(private router: Router,
@@ -19,8 +24,32 @@ export class ContactReferralsComponent {
               private data: DataWriterService) {
 
     this.partners = store.select(store => store.partners);
+
+    let cid = route.snapshot.parent.params["cid"];
+
+    this.openReferrals = store.select(store => store.referrals)
+                          .map(referrals => referrals.filter(referral => referral.cid == cid && referral.status == "open") );
+
+    this.closedReferrals = store.select(store => store.referrals)
+                          .map(referrals => referrals.filter(referral => referral.cid == cid && referral.status !== "open") );
+
   }
 
+  ngOnInit() {
+
+    this.partners$ = this.partners.subscribe(partners => {
+      if (partners.length) {
+        this.partnersHash = partners.reduce((hash, partner) => {
+          hash[partner.pid] = partner;
+          return hash;
+        }, {});
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.partners$.unsubscribe();
+  }
 
   referredPartner(referredPartnerId) {
     this.referredPartnerId = referredPartnerId;
@@ -34,4 +63,5 @@ export class ContactReferralsComponent {
     let cid = this.route.parent.snapshot.params["cid"];
     this.data.addReferral(cid, this.referredPartnerId);
   }
+
 }

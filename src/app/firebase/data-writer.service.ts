@@ -107,10 +107,12 @@ export class DataWriterService {
     // Update the index entry when the status changes
     //
     let status = newDetail["status"];
-    if (status !== undefined) {
-      let entry: any = { status };
+    let to_uid = newDetail["to_uid"];
+    if (status !== undefined || to_uid !== undefined) {
+      let entry: any = {};
+      if (status !== undefined) entry.status = status;
+      if (to_uid !== undefined) entry.to_uid = to_uid;
       this.af.database.object("/referrals/" + rid).update(entry);
     }
   }
-
 }

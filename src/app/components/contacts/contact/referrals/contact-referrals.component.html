@@ -1,4 +1,34 @@
+<h3>Open</h3>
+<div class="mt-wrapper">
+  <div class="mt-table">
+    <div class="mt-row header">
+      <div class="mt-cell">From</div>
+      <div class="mt-cell">To</div>
+      <div class="mt-cell">Date</div>
+    </div>
+    <div class="mt-row clickable" *ngFor="let referral of openReferrals | async" routerLink="/referrals/{{referral.rid}}">
+      <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
+      <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
+      <div class="mt-cell">{{referral.timestamp}}</div>
+    </div>
+  </div>
+</div>
 
+<h3>Closed</h3>
+<div class="mt-wrapper">
+  <div class="mt-table">
+    <div class="mt-row header">
+      <div class="mt-cell">From</div>
+      <div class="mt-cell">To</div>
+      <div class="mt-cell">Date</div>
+    </div>
+    <div class="mt-row clickable" *ngFor="let referral of closedReferrals | async" routerLink="/referrals/{{referral.rid}}">
+      <div class="mt-cell">{{partnersHash[referral.from_pid].name}}</div>
+      <div class="mt-cell">{{partnersHash[referral.to_pid].name}}</div>
+      <div class="mt-cell">{{referral.timestamp}}</div>
+    </div>
+  </div>
+</div>
 
 <h3>Create Referral To:</h3>
 
