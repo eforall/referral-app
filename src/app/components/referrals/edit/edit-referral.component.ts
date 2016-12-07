@@ -73,7 +73,7 @@ export class EditReferralComponent {
         let fromMember = members.find(member => member.pid == referralDetail.from_pid);
         if (fromMember) this.fromMemberName = fromMember.displayName;
 
-        this.toMembers = members.filter(member => member.pid = referralDetail.to_pid);
+        this.toMembers = members.filter(member => member.pid == referralDetail.to_pid);
       }
     });
   }
