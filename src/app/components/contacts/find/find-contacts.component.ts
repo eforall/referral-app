@@ -18,7 +18,7 @@ export class FindContactsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.contacts$ = this.store.select(store => store.contacts).subscribe((contacts: Contact[]) => {
-      this.contacts = contacts;
+      this.contacts = contacts.sort((c1, c2) => { return c1.name.localeCompare(c2.name); });
     });
   }
 
