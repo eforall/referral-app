@@ -1,8 +1,8 @@
 
 <md-card *ngFor="let member of members | async">
    <md-card-title title="{{member.uid}}">{{member.displayName}}</md-card-title>
-   <md-card-subtitle>{{member.email}}</md-card-subtitle>   
    <md-card-content>
        partner: <partner-select [partners]="partners | async" [currentId]="member.pid" (newValue)="changePartner(member.uid, $event)"></partner-select>
+       <small>{{member.email}}</small>
    </md-card-content>
 </md-card>

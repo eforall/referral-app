@@ -56,7 +56,7 @@ export class DataReaderService {
   private loadMembers() {
     let members = Observable.combineLatest(
       this.partners,
-      this.af.database.list("/members"), 
+      this.af.database.list("/members",  { query: { orderByChild: 'displayName' }}), 
       this.af.database.object("/access"),
       (partners: Partner[], members: Member[], access: any) => {
 
